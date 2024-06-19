@@ -1,0 +1,10 @@
+{
+    "name": "ali",
+    "family": "alaii",
+    "age": 12,
+    "information":{
+        "country": "iran",
+        "city": "Ahvaz"
+    },
+    "chats": ["slm,Khubi","slm to chetori?"]
+}
