@@ -2,10 +2,11 @@ import { Stack } from "@mui/material";
 import { AppBar } from "@mui/material";
 import React from "react";
 
-function index() {
+export const Header : React.FC = (): JSX.Element {
   return (
     <AppBar color="transparent" elevation={0}>
       {/* component Header */}
+      {/* elevation => boxShadow */}
       <Stack>
         {/* stack === div */}
         {/* we can use box but box have elovetion */}
@@ -22,5 +23,3 @@ function index() {
     </AppBar>
   );
 }
-
-export default index;
