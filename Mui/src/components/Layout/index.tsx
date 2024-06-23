@@ -1,13 +1,18 @@
 import React from 'react'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
-import { Outlet } from 'react-router'
+import { Outlet } from 'react-router-dom'
+import { Container } from '@mui/material'
 
 function index() {
     return (
         <>
             <Header />
-            <Outlet />
+
+            <Container maxWidth={'lg'}>
+                <Outlet />
+            </Container>
+
             <Footer />
         </>
     )
