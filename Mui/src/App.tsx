@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePAge from './pages/Home/HomePAge'
 import Layout from './components/Layout/index'
+import TermsPage from './pages/Terms/Index'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { theme } from './styles/matrial'
 import { CacheProvider } from '@emotion/react'
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Layout />}>
               <Route index element={<HomePAge />} />
+              <Route path='terms' element={<TermsPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

@@ -1,7 +1,9 @@
 import { AppBar, Button, Container, Stack } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+    const navigation = useNavigate()
     return (
         <AppBar color={'transparent'} elevation={0} position='static'>
             {/* <AppBar> is header component </AppBar> */}
@@ -24,8 +26,8 @@ function Header() {
                     </Stack>
                     <Stack flexDirection={'row'}>
                         <Stack flexDirection={'row'} gap={2}>
-                            <Button >سفارش اینترنتی</Button>
-                            <Button >قوانین سایت</Button>
+                            <Button onClick={() => { navigation('/') }}>سفارش اینترنتی</Button>
+                            <Button onClick={() => { navigation("/terms") }}>قوانین سایت</Button>
                         </Stack>
                         <Stack color={'primary'}>
                             <Button variant='contained'>ورود / عضویت</Button>
