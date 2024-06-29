@@ -9,7 +9,7 @@ function index() {
         <>
             <Header />
 
-            <Container maxWidth={'lg'}>
+            <Container maxWidth={'xl'}>
                 <Outlet />
             </Container>
 

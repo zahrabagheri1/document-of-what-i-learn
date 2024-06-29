@@ -11,11 +11,12 @@ function Header() {
             {/* box has elevation  */}
             {/* stack direction flex defult is colem */}
             {/* box direction flex defult is row */}
-            <Container maxWidth={'lg'}>
+            <Container maxWidth={'xl'}>
                 <Stack
                     flexDirection={'row'}
                     justifyContent={'space-between'}
                     alignItems={'center'}
+                    p={'20px'}
                 >
                     <Stack>
                         <img

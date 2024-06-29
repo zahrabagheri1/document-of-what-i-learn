@@ -8,6 +8,7 @@ import { CacheProvider } from '@emotion/react'
 import { cacheRtl } from './styles/chase'
 import { GlobalStyles } from '@mui/material'
 import { GlobalStyled } from './styles/global'
+import { Details } from '@mui/icons-material'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Layout />}>
               <Route index element={<HomePAge />} />
+              <Route path='/:id' element={<Details />} />
               <Route path='terms' element={<TermsPage />} />
             </Route>
           </Routes>
