@@ -11,13 +11,13 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ title, image, price }): JSX.Element => {
     console.log(image)
     return (
-        <Stack border={"1px solid #ffff"} borderRadius={5} overflow={"hidden"}>
+        <Stack border={"1px solid #e7e7e7"} borderRadius={5} overflow={"hidden"}>
             <Stack>
                 <img src={'https://static.delino.com/Image/Restaurant/Food/y5bwcxjv.y52_560x350.jpg'} />
             </Stack>
             <Stack p={2} spacing={1} >
                 <Stack>
-                    <Typography variant="h6" textOverflow={"ellipsis"}>{title}</Typography>
+                    <Typography variant="h6" sx={{ textOverflow: "ellipsis", overflow: "hidden", width: "90%", textWrap: "nowrap" }}>{title}</Typography>
                 </Stack>
                 <Stack direction={"row"} justifyContent={"space-between"}>
                     <Typography variant="subtitle1" fontWeight={200}>{price} تومان</Typography>

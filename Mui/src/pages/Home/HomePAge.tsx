@@ -6,6 +6,7 @@ import { Container, Grid, Skeleton } from '@mui/material'
 import { Card } from '../../components/Basic/Card/Index'
 import { GetMealResponse, GetSliderResponse } from '../../@types/api.types'
 import { Link } from 'react-router-dom'
+import Checkout from '../../components/Basic/Checkout/Index'
 
 function HomePAge() {
 
@@ -29,7 +30,7 @@ function HomePAge() {
       <Slider images={sliderData?.map(item => item.src) as string[]} />
       <Grid container spacing={"26px"}>
         <Grid item xs={12} md={8}>
-          <Grid container spacing={5}>
+          <Grid container spacing={2}>
             {
               mealData?.categories.map((item) => (
                 item.sub?.map((sub) => (
@@ -46,7 +47,9 @@ function HomePAge() {
           </Grid>
         </Grid>
 
-        <Grid item xs={0} md={4}>Hello cart</Grid>
+        <Grid item xs={0} md={4}>
+          <Checkout />
+        </Grid>
       </Grid>
     </Container>
   )
