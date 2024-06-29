@@ -15,11 +15,11 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
             <Stack borderBottom={"2px solid #e7e7e7"} px={"15px"} flexDirection={"row"} justifyContent={'space-between'} alignItems={"center"}>
                 <Typography fontWeight={"bold"}>
                     سبد خرید
-                    {
+                    ({
                         basket?.reduce((accumlator, currentvalue) => {
-                            return `(${currentvalue.Count + accumlator})`
+                            return currentvalue.Count + accumlator
                         }, 0)
-                    }
+                    })
                 </Typography>
                 <IconButton >
                     <DeleteOutlineIcon />

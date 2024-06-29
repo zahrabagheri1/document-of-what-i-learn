@@ -18,42 +18,78 @@ const HomePAge: React.FC = (): JSX.Element => {
     // 1. If not, it should be added to the list
     // 2. If it is added, it should be added to its account
 
+    // const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
+    // if (alreadyExist) {
+    // exist
+    // Ravesh (1)
+    // if (alreadyExist.Count) {
+    //   alreadyExist.Count += 1
+    // } else {
+    //   alreadyExist.Count = 1
+    // }
+
+    // alreadyExist.Count += 1
+
+    // setbasket
+    // const basketWithOutElement = basket?.filter((x) => x.id != arg.id)
+    // Bug => When we add a product, it goes to the bottom of the list 
+    // setBasket([...basketWithOutElement, alreadyExist])
+
+    // } else {
+    // not exist
+    // setBasket([...basket, arg])
+    // setBasket([...basket, { ...arg, Count: 1 }])
+    // }
+    // }
+
+    // Ravesh (2)
     const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
 
     if (alreadyExist) {
-      // exist
-      // if (alreadyExist.Count) {
-      //   alreadyExist.Count += 1
-      // } else {
-      //   alreadyExist.Count = 1
-      // }
-
-      alreadyExist.Count += 1
-
-      // setbasket
-      const basketWithOutElement = basket?.filter((x) => x.id != arg.id)
-      setBasket([...basketWithOutElement, alreadyExist])
+      const newBasket = basket?.map((item) => {
+        if (item.id == arg.id) {
+          item.Count += 1
+        }
+        return item;
+      })
+      setBasket(newBasket)
 
     } else {
-      // not exist
-      // setBasket([...basket, arg])
       setBasket([...basket, { ...arg, Count: 1 }])
     }
   }
 
+
   const handleRemoveFromBasket = (id: number) => {
     // 3. If it is reduced, it should be reduced from the account unless it is the last account to be deleted
+    // const alreadyExist = basket?.find((x) => x.id == id) //undefined
+    // if (alreadyExist) {
+    //   const basketWithOutElement = basket?.filter((x) => x.id != id)
+
+    //   if (alreadyExist?.Count > 1) {
+    //     alreadyExist.Count -= 1
+    //     setBasket([...basketWithOutElement, alreadyExist])
+    //   } else {
+    //     setBasket(basketWithOutElement)
+
+    //   }
+    // }
+
+    //Ravesh 2
     const alreadyExist = basket?.find((x) => x.id == id) //undefined
-    console.log("REMOOOOOOOOOOOOVE", id)
     if (alreadyExist) {
       const basketWithOutElement = basket?.filter((x) => x.id != id)
-      
+
       if (alreadyExist?.Count > 1) {
-        alreadyExist.Count -= 1
-        setBasket([...basketWithOutElement, alreadyExist])
+        const newBasket = basket?.map((item) => {
+          if (item.id == id) {
+            item.Count -= 1
+          }
+          return item
+        })
+        setBasket(newBasket)
       } else {
         setBasket(basketWithOutElement)
-
       }
     }
   }
