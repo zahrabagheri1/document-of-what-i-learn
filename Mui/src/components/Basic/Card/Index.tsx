@@ -13,7 +13,7 @@ export const Card: React.FC<CardProps> = ({ title, image, price }): JSX.Element 
     return (
         <Stack border={"1px solid #e7e7e7"} borderRadius={5} overflow={"hidden"}>
             <Stack>
-                <img src={'https://static.delino.com/Image/Restaurant/Food/y5bwcxjv.y52_560x350.jpg'} />
+                <img src={image} />
             </Stack>
             <Stack p={2} spacing={1} >
                 <Stack>

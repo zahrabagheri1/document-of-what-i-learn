@@ -7,9 +7,9 @@ interface CheckoutProps { }
 
 const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
     return (
-        <Stack border={"2px solid #e7e7e7"} borderRadius={5}>
+        <Stack border={"2px solid #e7e7e7"} borderRadius={2}>
             <Stack borderBottom={"2px solid #e7e7e7"} px={"15px"} flexDirection={"row"} justifyContent={'space-between'} alignItems={"center"}>
-                <Typography>سبد خرید</Typography>
+                <Typography fontWeight={"bold"}>سبد خرید</Typography>
                 <IconButton >
                     <DeleteOutlineIcon />
                 </IconButton>
@@ -39,12 +39,12 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
                     </Stack>
                 </Stack>
             </Stack>
-            <Stack flexDirection={"row"} justifyContent={"space-between"} px={"15px"} >
+            <Stack flexDirection={"row"} justifyContent={"space-between"} p={"15px"} >
                 <Typography>هزینه کل</Typography>
                 <Typography>250.000 تومان</Typography>
             </Stack>
-            <Stack>
-                <Button>تکمیل سفارش</Button>
+            <Stack color={'primary'} p={"15px"}>
+                <Button variant='contained'>تکمیل سفارش</Button>
             </Stack>
         </Stack>
     )

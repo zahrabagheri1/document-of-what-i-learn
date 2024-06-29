@@ -37,7 +37,7 @@ function HomePAge() {
                   sub.food.map((food) => (
                     <Grid item xs={12} md={4} key={food.id}>
                       <Link to={`/${food.id}`}>
-                        <Card title={food.title} image={food.img} price={food.price.toString()} />
+                        <Card title={food.title} image={food.img.replace("#SIZEOFIMAGE#", "560x350")} price={food.price.toString()} />
                       </Link>
                     </Grid>
                   ))
