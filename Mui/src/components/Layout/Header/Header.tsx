@@ -1,9 +1,12 @@
 import { AppBar, Button, Container, Stack } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../../../context/store'
 
-function Header() {
+const Header: React.FC = (): JSX.Element => {
     const navigation = useNavigate()
+    const context = useContext(AppContext)
+    // console.log(context)
     return (
         <AppBar color={'transparent'} elevation={0} position='static'>
             {/* <AppBar> is header component </AppBar> */}

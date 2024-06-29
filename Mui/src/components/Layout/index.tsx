@@ -4,7 +4,7 @@ import Footer from './Footer/Footer'
 import { Outlet } from 'react-router-dom'
 import { Container } from '@mui/material'
 
-function index() {
+const index: React.FC = (): JSX.Element => {
     return (
         <>
             <Header />

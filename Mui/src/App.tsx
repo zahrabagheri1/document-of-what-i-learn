@@ -9,25 +9,32 @@ import { cacheRtl } from './styles/chase'
 import { GlobalStyles } from '@mui/material'
 import { GlobalStyled } from './styles/global'
 import { Details } from '@mui/icons-material'
+import { AppContext } from './context/store'
+import { useState } from 'react'
+import { Food } from './@types/api.types'
 
 
-function App() {
+const App: React.FC = (): JSX.Element => {
+  const [basket, setBasket] = useState<Food[]>([])
+
   return (
-    <CacheProvider value={cacheRtl}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles styles={GlobalStyled} />
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Layout />}>
-              <Route index element={<HomePAge />} />
-              <Route path='/:id' element={<Details />} />
-              <Route path='terms' element={<TermsPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        <CssBaseline />
-      </ThemeProvider>
-    </CacheProvider>
+    <AppContext.Provider value={{ basket, setBasket }}>
+      <CacheProvider value={cacheRtl}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles styles={GlobalStyled} />
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Layout />}>
+                <Route index element={<HomePAge />} />
+                <Route path='/:id' element={<Details />} />
+                <Route path='terms' element={<TermsPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+          <CssBaseline />
+        </ThemeProvider>
+      </CacheProvider>
+    </AppContext.Provider>
   )
 }
 

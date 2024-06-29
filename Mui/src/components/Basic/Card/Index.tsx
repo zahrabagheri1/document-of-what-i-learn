@@ -5,13 +5,16 @@ import RemoveIcon from '@mui/icons-material/Remove'
 interface CardProps {
     title: string,
     image: string,
-    price: string
+    price: string,
+    onAddClick: () => void,
+    onRemoveClick: () => void,
+    onClick?: () => void
 }
 
-export const Card: React.FC<CardProps> = ({ title, image, price }): JSX.Element => {
-    console.log(image)
+export const Card: React.FC<CardProps> = ({ title, image, price, onClick, onAddClick, onRemoveClick }): JSX.Element => {
+    // console.log(image)
     return (
-        <Stack border={"1px solid #e7e7e7"} borderRadius={5} overflow={"hidden"}>
+        <Stack border={"1px solid #e7e7e7"} borderRadius={5} overflow={"hidden"} component={"a"} onClick={onClick}>
             <Stack>
                 <img src={image} />
             </Stack>
@@ -22,10 +25,16 @@ export const Card: React.FC<CardProps> = ({ title, image, price }): JSX.Element 
                 <Stack direction={"row"} justifyContent={"space-between"}>
                     <Typography variant="subtitle1" fontWeight={200}>{price} تومان</Typography>
                     <Stack direction={"row"}>
-                        <IconButton>
+                        <IconButton onClick={(e) => {
+                            e.stopPropagation()
+                            onAddClick()
+                        }}>
                             <AddIcon />
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={(e) => {
+                            e.stopPropagation()
+                            onRemoveClick()
+                        }}>
                             <RemoveIcon />
                         </IconButton>
                     </Stack>
