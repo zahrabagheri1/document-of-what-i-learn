@@ -1,18 +1,25 @@
 import { IconButton, Stack, Typography } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import { useContext } from "react"
+import { AppContext } from "../../../context/store"
 
 interface CardProps {
+    id: number,
     title: string,
     image: string,
     price: string,
+    count: string,
     onAddClick: () => void,
     onRemoveClick: () => void,
-    onClick?: () => void
+    onClick?: () => void,
+    showRemoveButton: boolean
 }
 
-export const Card: React.FC<CardProps> = ({ title, image, price, onClick, onAddClick, onRemoveClick }): JSX.Element => {
-    // console.log(image)
+export const Card: React.FC<CardProps> = ({ id, title, image, price, onClick, onAddClick, onRemoveClick, showRemoveButton }): JSX.Element => {
+    const { basket } = useContext(AppContext)
+    // console.log(basket)
+
     return (
         <Stack border={"1px solid #e7e7e7"} borderRadius={5} overflow={"hidden"} component={"a"} onClick={onClick}>
             <Stack>
@@ -24,19 +31,25 @@ export const Card: React.FC<CardProps> = ({ title, image, price, onClick, onAddC
                 </Stack>
                 <Stack direction={"row"} justifyContent={"space-between"}>
                     <Typography variant="subtitle1" fontWeight={200}>{price} تومان</Typography>
-                    <Stack direction={"row"}>
+                    <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
                         <IconButton onClick={(e) => {
                             e.stopPropagation()
                             onAddClick()
                         }}>
                             <AddIcon />
                         </IconButton>
-                        <IconButton onClick={(e) => {
-                            e.stopPropagation()
-                            onRemoveClick()
-                        }}>
-                            <RemoveIcon />
-                        </IconButton>
+                        {basket?.map((item) => (
+                            item.id == id && <Typography>{item.Count}</Typography>
+
+                        ))}
+                        {showRemoveButton &&
+                            <IconButton onClick={(e) => {
+                                e.stopPropagation()
+                                onRemoveClick()
+                            }}>
+                                <RemoveIcon />
+                            </IconButton>
+                        }
                     </Stack>
                 </Stack>
             </Stack>

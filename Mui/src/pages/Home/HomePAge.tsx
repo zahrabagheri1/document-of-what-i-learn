@@ -13,7 +13,7 @@ const HomePAge: React.FC = (): JSX.Element => {
   const navigate = useNavigate()
   const { basket, setBasket } = useContext(AppContext)
 
-  console.log(basket)
+  // console.log(basket)
   const handleAddToBasket = (arg: Food) => {
     // 1. If not, it should be added to the list
     // 2. If it is added, it should be added to its account
@@ -57,8 +57,8 @@ const HomePAge: React.FC = (): JSX.Element => {
     } else {
       setBasket([...basket, { ...arg, Count: 1 }])
     }
-  }
 
+  }
 
   const handleRemoveFromBasket = (id: number) => {
     // 3. If it is reduced, it should be reduced from the account unless it is the last account to be deleted
@@ -121,12 +121,14 @@ const HomePAge: React.FC = (): JSX.Element => {
                   sub.food.map((food) => (
                     <Grid item xs={12} md={4} key={food.id}>
                       <Card
+                        id={food.id}
                         title={food.title}
                         image={food.img.replace("#SIZEOFIMAGE#", "560x350")}
                         price={food.price.toString()}
                         onClick={() => navigate(`/${food.id}`)}
                         onAddClick={() => handleAddToBasket(food)}
                         onRemoveClick={() => handleRemoveFromBasket(food.id)}
+                        showRemoveButton={!!basket?.find((x) => x.id == food.id)?.Count}
                       />
                     </Grid>
                   ))

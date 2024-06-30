@@ -4,11 +4,54 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove'
 import { useContext } from "react";
 import { AppContext } from "../../../context/store";
+import { Food } from "../../../@types/api.types";
 
 interface CheckoutProps { }
 
 const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
-    const { basket } = useContext(AppContext)
+    const { basket, setBasket } = useContext(AppContext)
+
+    const onAddClick = (arg: Food) => {
+        console.log(arg)
+        const alreadyExist = basket?.find((x) => x.id == arg.id)
+        if (alreadyExist) {
+            const newBasket = basket?.map((item) => {
+                if (item.id == arg.id) {
+                    item.Count += 1
+                }
+                return item;
+            })
+            setBasket(newBasket)
+
+        } else {
+            setBasket([...basket, { ...arg, Count: 1 }])
+        }
+
+    }
+
+    const onRemoveClick = (id: number) => {
+        const alreadyExist = basket?.find((x) => x.id == id) //undefined
+        if (alreadyExist) {
+            const basketWithOutElement = basket?.filter((x) => x.id != id)
+
+            if (alreadyExist?.Count > 1) {
+                const newBasket = basket?.map((item) => {
+                    if (item.id == id) {
+                        item.Count -= 1
+                    }
+                    return item
+                })
+                setBasket(newBasket)
+            } else {
+                setBasket(basketWithOutElement)
+            }
+        }
+
+    }
+
+    const handleRemoveBasket = () => {
+        setBasket([])
+    }
 
     return (
         <Stack border={"2px solid #e7e7e7"} borderRadius={2}>
@@ -21,7 +64,7 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
                         }, 0)
                     })
                 </Typography>
-                <IconButton >
+                <IconButton onClick={handleRemoveBasket()}>
                     <DeleteOutlineIcon />
                 </IconButton>
             </Stack>
@@ -36,9 +79,9 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
                                 <Typography variant="subtitle1" fontWeight={200}>{item.price} تومان</Typography>
                             </Stack>
                             <Stack flexDirection={"row"} justifyContent={"space-between"} alignItems={"center"}>
-                                <IconButton><AddIcon /></IconButton>
+                                <IconButton onClick={() => onAddClick(item)}><AddIcon /></IconButton>
                                 <Typography>{item.Count}</Typography>
-                                <IconButton><RemoveIcon /></IconButton>
+                                <IconButton onClick={() => onRemoveClick(item.id)}><RemoveIcon /></IconButton>
                             </Stack>
                         </Stack>
                     ))
