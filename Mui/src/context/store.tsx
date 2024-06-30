@@ -1,12 +1,12 @@
-import React, { Children, createContext, useState } from "react";
-import { Food } from "../@types/api.types";
+import React, { Children, createContext, useReducer, useState } from "react";
+import { Basketreducer } from "../reducer/Basket/Index";
 
-type AppContextState = {
-  basket?: any[];
-  setBasket?: React.Dispatch<React.SetStateAction<Food[]>>;
-};
+// type AppContextState = {
+//   basket?: any[];
+//   setBasket?: React.Dispatch<React.SetStateAction<Food[]>>;
+// };
 
-export const AppContext = createContext<AppContextState>({});
+// export const AppContext = createContext<AppContextState>({});
 
 // best data type fpr cpntext is {}
 
@@ -16,11 +16,50 @@ export const AppContext = createContext<AppContextState>({});
 // 2. data type
 // 3. local or global
 
+// interface AppProviderState extends React.PropsWithChildren { }
+
+// export const AppProvider: React.FC<AppProviderState> = ({ Children }): JSX.Element => {
+// const [basket, setBasket] = useState<Food[]>([])
+
+//   return (<AppContext.Provider value={{ basket, setBasket }}>{Children}</AppContext.Provider>);
+// };  
+
+
+// ! Desing pattern Flux
+// ! Context => Flux
+
+type ActionType<T, K = any> = {
+  type: T;
+  payload: K;
+}
+interface IntialStateTypes {
+  basket: any
+}
+
+const inrialState: IntialStateTypes = {
+  basket: []
+}
+
+type AppContextState = {
+  state: any;
+  dispatch: any;
+};
+
+export const AppContext = createContext<AppContextState>({
+  state: inrialState,
+  dispatch: () => null
+});
 
 interface AppProviderState extends React.PropsWithChildren { }
 
-export const AppProvider: React.FC<AppProviderState> = ({ Children }): JSX.Element => {
-  const [basket, setBasket] = useState<Food[]>([])
+const combineReducer = ({ basket }: IntialStateTypes, action: ActionType<unknown>) => {
+  basket: Basketreducer(basket, action),
+  // vendor: VendorReduser(state, action)
 
-  return (<AppContext.Provider value={{ basket, setBasket }}>{Children}</AppContext.Provider>);
-};
+}
+
+export const AppProvider: React.FC<AppProviderState> = ({ Children }): JSX.Element => {
+  const [state, dispatch] = useReducer(combineReducer, inrialState)
+
+  return (<AppContext.Provider value={{ state, dispatch }}>{Children}</AppContext.Provider>);
+};  
