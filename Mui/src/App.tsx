@@ -9,16 +9,12 @@ import { cacheRtl } from './styles/chase'
 import { GlobalStyles } from '@mui/material'
 import { GlobalStyled } from './styles/global'
 import { Details } from '@mui/icons-material'
-import { AppContext } from './context/store'
-import { useState } from 'react'
-import { Food } from './@types/api.types'
-
+import { AppProvider } from './context/store'
 
 const App: React.FC = (): JSX.Element => {
-  const [basket, setBasket] = useState<Food[]>([])
 
   return (
-    <AppContext.Provider value={{ basket, setBasket }}>
+    <AppProvider>
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={theme}>
           <GlobalStyles styles={GlobalStyled} />
@@ -34,7 +30,7 @@ const App: React.FC = (): JSX.Element => {
           <CssBaseline />
         </ThemeProvider>
       </CacheProvider>
-    </AppContext.Provider>
+    </AppProvider>
   )
 }
 

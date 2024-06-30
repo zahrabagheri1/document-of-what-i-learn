@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { Children, createContext, useState } from "react";
 import { Food } from "../@types/api.types";
 
 type AppContextState = {
@@ -15,3 +15,12 @@ export const AppContext = createContext<AppContextState>({});
 // 1. do we need or not
 // 2. data type
 // 3. local or global
+
+
+interface AppProviderState extends React.PropsWithChildren { }
+
+export const AppProvider: React.FC<AppProviderState> = ({ Children }): JSX.Element => {
+  const [basket, setBasket] = useState<Food[]>([])
+
+  return (<AppContext.Provider value={{ basket, setBasket }}>{Children}</AppContext.Provider>);
+};
