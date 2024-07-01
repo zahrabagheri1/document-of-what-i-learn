@@ -8,10 +8,13 @@ import { Food, GetMealResponse, GetSliderResponse } from '../../@types/api.types
 import { useNavigate } from 'react-router-dom'
 import Checkout from '../../components/Basic/Checkout/Index'
 import { AppContext } from '../../context/store'
+import { BasketType } from '../../reducer/Basket/Index'
 
 const HomePAge: React.FC = (): JSX.Element => {
   const navigate = useNavigate()
-  const { basket, setBasket } = useContext(AppContext)
+  // const { basket, setBasket } = useContext(AppContext)
+  // Ravesh 3
+  const { state: { basket }, dispatch } = useContext(AppContext)
 
   // console.log(basket)
   const handleAddToBasket = (arg: Food) => {
@@ -43,21 +46,26 @@ const HomePAge: React.FC = (): JSX.Element => {
     // }
 
     // Ravesh (2)
-    const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
+    // const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
 
-    if (alreadyExist) {
-      const newBasket = basket?.map((item) => {
-        if (item.id == arg.id) {
-          item.Count += 1
-        }
-        return item;
-      })
-      setBasket(newBasket)
+    // if (alreadyExist) {
+    //   const newBasket = basket?.map((item) => {
+    //     if (item.id == arg.id) {
+    //       item.Count += 1
+    //     }
+    //     return item;
+    //   })
+    //   setBasket(newBasket)
 
-    } else {
-      setBasket([...basket, { ...arg, Count: 1 }])
-    }
+    // } else {
+    //   setBasket([...basket, { ...arg, Count: 1 }])
+    // }
 
+    // Ravesh (3)
+    dispatch({
+      type: BasketType.AddToBasket,
+      payload: arg
+    })
   }
 
   const handleRemoveFromBasket = (id: number) => {
@@ -76,22 +84,28 @@ const HomePAge: React.FC = (): JSX.Element => {
     // }
 
     //Ravesh 2
-    const alreadyExist = basket?.find((x) => x.id == id) //undefined
-    if (alreadyExist) {
-      const basketWithOutElement = basket?.filter((x) => x.id != id)
+    // const alreadyExist = basket?.find((x) => x.id == id) //undefined
+    // if (alreadyExist) {
+    //   const basketWithOutElement = basket?.filter((x) => x.id != id)
 
-      if (alreadyExist?.Count > 1) {
-        const newBasket = basket?.map((item) => {
-          if (item.id == id) {
-            item.Count -= 1
-          }
-          return item
-        })
-        setBasket(newBasket)
-      } else {
-        setBasket(basketWithOutElement)
-      }
-    }
+    //   if (alreadyExist?.Count > 1) {
+    //     const newBasket = basket?.map((item) => {
+    //       if (item.id == id) {
+    //         item.Count -= 1
+    //       }
+    //       return item
+    //     })
+    //     setBasket(newBasket)
+    //   } else {
+    //     setBasket(basketWithOutElement)
+    //   }
+    // }
+
+    // Ravesh 3
+    dispatch({
+      type: BasketType.RemoveFromBasket,
+      payload: id
+    })
   }
 
   // For slider
@@ -108,7 +122,7 @@ const HomePAge: React.FC = (): JSX.Element => {
     return <Skeleton height={"50vh"} animation={"wave"} />
   }
 
-  // console.log(mealData?.categories[0].sub[0].food[0].img)
+  console.log(mealData?.categories)
   return (
     <Container maxWidth={'xl'} >
       <Slider images={sliderData?.map(item => item.src) as string[]} />
@@ -116,9 +130,9 @@ const HomePAge: React.FC = (): JSX.Element => {
         <Grid item xs={12} md={8}>
           <Grid container spacing={2}>
             {
-              mealData?.categories.map((item) => (
-                item.sub?.map((sub) => (
-                  sub.food.map((food) => (
+              mealData?.categories.map((item: { sub: { food: Food[] }[] }) => (
+                item.sub?.map((sub: { food: Food[] }) => (
+                  sub.food.map((food: Food) => (
                     <Grid item xs={12} md={4} key={food.id}>
                       <Card
                         id={food.id}
@@ -128,7 +142,7 @@ const HomePAge: React.FC = (): JSX.Element => {
                         onClick={() => navigate(`/${food.id}`)}
                         onAddClick={() => handleAddToBasket(food)}
                         onRemoveClick={() => handleRemoveFromBasket(food.id)}
-                        showRemoveButton={!!basket?.find((x) => x.id == food.id)?.Count}
+                        showRemoveButton={!!basket.find((x: { id: any }) => x.id == food.id)?.Count}
                       />
                     </Grid>
                   ))

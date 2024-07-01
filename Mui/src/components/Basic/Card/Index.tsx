@@ -9,7 +9,6 @@ interface CardProps {
     title: string,
     image: string,
     price: string,
-    count: string,
     onAddClick: () => void,
     onRemoveClick: () => void,
     onClick?: () => void,
@@ -17,7 +16,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ id, title, image, price, onClick, onAddClick, onRemoveClick, showRemoveButton }): JSX.Element => {
-    const { basket } = useContext(AppContext)
+    const { state: { basket } } = useContext(AppContext)
     // console.log(basket)
 
     return (
@@ -38,7 +37,7 @@ export const Card: React.FC<CardProps> = ({ id, title, image, price, onClick, on
                         }}>
                             <AddIcon />
                         </IconButton>
-                        {basket?.map((item) => (
+                        {basket?.map((item: { id: number; Count: number }) => (
                             item.id == id && <Typography>{item.Count}</Typography>
 
                         ))}

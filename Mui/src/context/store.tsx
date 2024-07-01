@@ -1,4 +1,4 @@
-import React, { Children, createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer } from "react";
 import { Basketreducer } from "../reducer/Basket/Index";
 
 // type AppContextState = {
@@ -28,38 +28,36 @@ import { Basketreducer } from "../reducer/Basket/Index";
 // ! Desing pattern Flux
 // ! Context => Flux
 
-type ActionType<T, K = any> = {
+export type ActionType<T, K = any> = {
   type: T;
-  payload: K;
+  payload?: K;
 }
-interface IntialStateTypes {
-  basket: any
+export interface IntialStateTypes {
+  basket: any[]
 }
 
-const inrialState: IntialStateTypes = {
+export const inrialstate: IntialStateTypes = {
   basket: []
 }
 
-type AppContextState = {
+export type AppContextState = {
   state: any;
   dispatch: any;
 };
 
 export const AppContext = createContext<AppContextState>({
-  state: inrialState,
+  state: inrialstate,
   dispatch: () => null
 });
 
 interface AppProviderState extends React.PropsWithChildren { }
 
-const combineReducer = ({ basket }: IntialStateTypes, action: ActionType<unknown>) => {
+const combineReducer = ({ basket }: IntialStateTypes, action: ActionType<any>) => ({
   basket: Basketreducer(basket, action),
-  // vendor: VendorReduser(state, action)
+})
 
-}
+export const AppProvider: React.FC<AppProviderState> = ({ children }): JSX.Element => {
+  const [state, dispatch] = useReducer(combineReducer, inrialstate)
 
-export const AppProvider: React.FC<AppProviderState> = ({ Children }): JSX.Element => {
-  const [state, dispatch] = useReducer(combineReducer, inrialState)
-
-  return (<AppContext.Provider value={{ state, dispatch }}>{Children}</AppContext.Provider>);
+  return (<AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>);
 };  

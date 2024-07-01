@@ -1,12 +1,14 @@
+import { ReactNode } from "react";
+
 export interface GetSliderResponse {
   src: string;
 }
 
 export interface GetMealResponse {
-  categories: Category[];
+  categories: Categories[];
 }
  
-export interface Category {
+export interface Categories {
   id: number;
   title: string;
   logo: string;
@@ -32,6 +34,7 @@ export interface Sub {
 }
 
 export interface Food {
+  Count: ReactNode;
   index: number;
   id: number;
   img: string;
