@@ -12,3 +12,7 @@
 
 # Flow of Redux
 ![alt text](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
+
+
+
+promblem of redux => when we dispatch action we do't know wich one in value
