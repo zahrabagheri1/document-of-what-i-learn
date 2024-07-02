@@ -1,7 +1,7 @@
 
 function App() {
   return (
-    <div>
+    <div className="bg-slate-300 min-h-screen">
       Zibageram
     </div>
   )
