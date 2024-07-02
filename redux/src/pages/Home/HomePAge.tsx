@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Slider from '../../components/Basic/Slider/Index'
 import { useAxios } from '../../hook/useAxios'
 import { API_URL } from '../../constants/apiUrl'
@@ -7,105 +7,22 @@ import { Card } from '../../components/Basic/Card/Index'
 import { Food, GetMealResponse, GetSliderResponse } from '../../@types/api.types'
 import { useNavigate } from 'react-router-dom'
 import Checkout from '../../components/Basic/Checkout/Index'
-import { AppContext } from '../../context/store'
-import { BasketType } from '../../reducer/Basket/Index'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../store/store'
+import { AddToBasket, RemoveFromBasket } from '../../store/features/basket/basket.slice'
 
 const HomePAge: React.FC = (): JSX.Element => {
   const navigate = useNavigate()
-  // const { basket, setBasket } = useContext(AppContext)
-  // Ravesh 3
-  const { state: { basket }, dispatch } = useContext(AppContext)
 
-  // console.log(basket)
+  const basket = useSelector<RootState>(state => state.basket as any[])
+  const dispatch = useDispatch<AppDispatch>()
+
   const handleAddToBasket = (arg: Food) => {
-    // 1. If not, it should be added to the list
-    // 2. If it is added, it should be added to its account
-
-    // const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
-    // if (alreadyExist) {
-    // exist
-    // Ravesh (1)
-    // if (alreadyExist.Count) {
-    //   alreadyExist.Count += 1
-    // } else {
-    //   alreadyExist.Count = 1
-    // }
-
-    // alreadyExist.Count += 1
-
-    // setbasket
-    // const basketWithOutElement = basket?.filter((x) => x.id != arg.id)
-    // Bug => When we add a product, it goes to the bottom of the list 
-    // setBasket([...basketWithOutElement, alreadyExist])
-
-    // } else {
-    // not exist
-    // setBasket([...basket, arg])
-    // setBasket([...basket, { ...arg, Count: 1 }])
-    // }
-    // }
-
-    // Ravesh (2)
-    // const alreadyExist = basket?.find((x) => x.id == arg.id) //undefined
-
-    // if (alreadyExist) {
-    //   const newBasket = basket?.map((item) => {
-    //     if (item.id == arg.id) {
-    //       item.Count += 1
-    //     }
-    //     return item;
-    //   })
-    //   setBasket(newBasket)
-
-    // } else {
-    //   setBasket([...basket, { ...arg, Count: 1 }])
-    // }
-
-    // Ravesh (3)
-    dispatch({
-      type: BasketType.AddToBasket,
-      payload: arg
-    })
+    dispatch(AddToBasket(arg))
   }
 
   const handleRemoveFromBasket = (id: number) => {
-    // 3. If it is reduced, it should be reduced from the account unless it is the last account to be deleted
-    // const alreadyExist = basket?.find((x) => x.id == id) //undefined
-    // if (alreadyExist) {
-    //   const basketWithOutElement = basket?.filter((x) => x.id != id)
-
-    //   if (alreadyExist?.Count > 1) {
-    //     alreadyExist.Count -= 1
-    //     setBasket([...basketWithOutElement, alreadyExist])
-    //   } else {
-    //     setBasket(basketWithOutElement)
-
-    //   }
-    // }
-
-    //Ravesh 2
-    // const alreadyExist = basket?.find((x) => x.id == id) //undefined
-    // if (alreadyExist) {
-    //   const basketWithOutElement = basket?.filter((x) => x.id != id)
-
-    //   if (alreadyExist?.Count > 1) {
-    //     const newBasket = basket?.map((item) => {
-    //       if (item.id == id) {
-    //         item.Count -= 1
-    //       }
-    //       return item
-    //     })
-    //     setBasket(newBasket)
-    //   } else {
-    //     setBasket(basketWithOutElement)
-    //   }
-    // }
-
-    // Ravesh 3
-    dispatch({
-      type: BasketType.RemoveFromBasket,
-      payload: id
-    })
+    dispatch(RemoveFromBasket(id))
   }
 
   // For slider
@@ -122,7 +39,6 @@ const HomePAge: React.FC = (): JSX.Element => {
     return <Skeleton height={"50vh"} animation={"wave"} />
   }
 
-  console.log(mealData?.categories)
   return (
     <Container maxWidth={'xl'} >
       <Slider images={sliderData?.map(item => item.src) as string[]} />

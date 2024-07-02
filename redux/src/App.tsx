@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePAge from './pages/Home/HomePAge'
+import HomePAge from './pages/Home/HomePage'
 import Layout from './components/Layout/index'
 import TermsPage from './pages/Terms/Index'
 import { CssBaseline, ThemeProvider } from '@mui/material'
