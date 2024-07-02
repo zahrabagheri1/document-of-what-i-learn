@@ -11,4 +11,4 @@
 1. Local State manegament
 
 # Flow of Redux
-![alt text](![alt text](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif))
+![alt text](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
