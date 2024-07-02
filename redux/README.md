@@ -16,3 +16,11 @@
 
 
 promblem of redux => when we dispatch action we do't know wich one in value
+
+dispatch => {type:1} 
+addToBasket()
+
+ریداکس در حالت عادی فقط ابجکت دیسپچ میکند
+برای اینکه فانکشن دیسپچ کند باید از میدل ور استفاده کنیم
+
+Middleware (Tank) (Saga)
