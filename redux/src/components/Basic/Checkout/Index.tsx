@@ -2,75 +2,27 @@ import { Button, IconButton, Stack, Typography } from "@mui/material"
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove'
-import { useContext } from "react";
-import { AppContext } from "../../../context/store";
 import { Food } from "../../../@types/api.types";
-import { BasketType } from "../../../reducer/Basket/Index";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store/store";
+import { AddToBasket, RemoveAllBasket, RemoveFromBasket } from "../../../store/features/basket/basket.slice";
 
 interface CheckoutProps { }
 
 const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
-    // const { basket, setBasket } = useContext(AppContext)
+    const basket = useSelector<RootState>(state => state.basket as any[])
+    const dispatch = useDispatch<AppDispatch>()
 
-    // Ravesh 3
-    const { state, dispatch } = useContext(AppContext)
-
-    console.log(state)
     const onAddClick = (arg: Food) => {
-        // console.log(arg)
-        // const alreadyExist = basket?.find((x) => x.id == arg.id)
-        // if (alreadyExist) {
-        //     const newBasket = basket?.map((item) => {
-        //         if (item.id == arg.id) {
-        //             item.Count += 1
-        //         }
-        //         return item;
-        //     })
-        //     setBasket(newBasket)
-
-        // } else {
-        //     setBasket([...basket, { ...arg, Count: 1 }])
-        // }
-
-        // Ravesh 3
-        dispatch({
-            type: BasketType.AddToBasket,
-            payload: arg
-        })
+        dispatch(AddToBasket(arg))
     }
 
     const onRemoveClick = (id: number) => {
-        // const alreadyExist = basket?.find((x) => x.id == id) //undefined
-        // if (alreadyExist) {
-        //     const basketWithOutElement = basket?.filter((x) => x.id != id)
-
-        //     if (alreadyExist?.Count > 1) {
-        //         const newBasket = basket?.map((item) => {
-        //             if (item.id == id) {
-        //                 item.Count -= 1
-        //             }
-        //             return item
-        //         })
-        //         setBasket(newBasket)
-        //     } else {
-        //         setBasket(basketWithOutElement)
-        //     }
-        // }
-
-        // Ravesh 3
-        dispatch({
-            type: BasketType.RemoveFromBasket,
-            payload: id
-        })
+        dispatch(RemoveFromBasket(id))
     }
 
-    const handleRemoveBasket = () => {
-        // setBasket([])
-
-        // Ravesh 3
-        dispatch({
-            type: BasketType.RemoveAllBasket
-        })
+    const handleRemoveBasket = (arg: any) => {
+        dispatch(RemoveAllBasket(arg))
     }
 
     return (
@@ -79,7 +31,7 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
                 <Typography fontWeight={"bold"}>
                     سبد خرید
                     ({
-                        state.basket.reduce((accumlator, currentvalue) => {
+                        basket?.reduce((accumlator: any, currentvalue: { Count: any; }) => {
                             return currentvalue.Count + accumlator
                         }, 0)
                     })
@@ -92,7 +44,7 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
             {/* items */}
             <Stack flexDirection={"column"} justifyContent={"space-between"} py={"10px"}>
                 {
-                    state.basket.map((item: Food) => (
+                    basket?.map((item: Food) => (
                         <Stack key={item.id} flexDirection={"row"} justifyContent={"space-between"} alignItems={"center"} px={"15px"} py={"10px"} borderBottom={"2px solid #e7e7e7"}>
                             <Stack flexDirection={"column"}>
                                 <Typography variant="body1">{item.title}</Typography>
@@ -109,7 +61,7 @@ const Checkout: React.FC<CheckoutProps> = (): JSX.Element => {
             </Stack>
             <Stack flexDirection={"row"} justifyContent={"space-between"} p={"15px"} >
                 <Typography>هزینه کل</Typography>
-                <Typography>{state.basket.reduce((accumlator, currentvalue) => {
+                <Typography>{basket?.reduce((accumlator: any, currentvalue: any) => {
                     return (currentvalue.Count * currentvalue.price) + accumlator
                 }, 0)} تومان</Typography>
             </Stack>

@@ -9,12 +9,13 @@ import { cacheRtl } from './styles/chase'
 import { GlobalStyles } from '@mui/material'
 import { GlobalStyled } from './styles/global'
 import { Details } from '@mui/icons-material'
-import { AppProvider } from './context/store'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
 
 const App: React.FC = (): JSX.Element => {
 
   return (
-    <AppProvider>
+    <Provider store={store}>
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={theme}>
           <GlobalStyles styles={GlobalStyled} />
@@ -30,7 +31,7 @@ const App: React.FC = (): JSX.Element => {
           <CssBaseline />
         </ThemeProvider>
       </CacheProvider>
-    </AppProvider>
+    </Provider>
   )
 }
 
