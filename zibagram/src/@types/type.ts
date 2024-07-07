@@ -1,5 +1,14 @@
 export interface LoginFormData {
   email: string;
-  username: string;
   password: string;
+}
+
+export interface LoginResponse {
+  id: number;
+  email: string;
+  username: string;
+  tokens: {
+    access: string;
+    refresh: string;
+  };
 }

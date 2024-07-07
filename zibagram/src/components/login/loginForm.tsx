@@ -13,8 +13,7 @@ export default function LoginForm() {
   // async function oneSubmit(data: LoginFormData) {
   //   console.log(data)
   //   try {
-  //     const response = await api.requestLogin(data)
-  //     console.log(response)
+  //     const response = await auth.login(data)
   //     navigate("/")
   //   } catch (error) {
   //     console.log("Error Occured!")

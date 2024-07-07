@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const aunthInstance = axios.create({
   baseURL: "https://fakestoreapi.com",
-  // timeout: 3000,
+  timeout: 3000,
 });
 // export const aunthInstance = axios.create({
 //   baseURL: "/api",
