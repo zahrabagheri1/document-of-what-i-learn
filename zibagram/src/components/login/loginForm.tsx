@@ -22,13 +22,6 @@ export default function LoginForm() {
   // }
 
   function onSubmit(data: LoginFormData) {
-    // const json = JSON.stringify(data);
-    // const data1 ={
-    //   username: "json",
-    //   password: "m38rmF$"
-    // }
-    // const json1 = JSON.stringify(data1);
-    // aunthInstance.post('auth/login', { json1 })
     if (data.email === "admin@gamial.com" && data.password ==="123456") {
       navigate("/")
     } else {

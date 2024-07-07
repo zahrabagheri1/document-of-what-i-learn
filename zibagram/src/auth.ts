@@ -1,11 +1,11 @@
-// import { LoginFormData } from "./@types/type";
+// import {SingupFormData, LoginFormData ,LoginResponse} from "./@types/type";
 // import { api } from "./api/api";
-// import { LoginResponse } from "./@types/type";
+// import Singup from "./pages/singup";
 
 export const auth = {
   isAuthenticated() {
     // const accessToken = localStorage.getItem("accessToken");
-    const accessToken = "eyJhbGciOiJIUzI1NiIsInR" //fake
+    const accessToken = "eyJhbGciOiJIUzI1NiIsInR"; //fake
     // const accessToken = null //fake
     if (!accessToken) {
       return false;
@@ -13,6 +13,7 @@ export const auth = {
     return true;
   },
 
+  // ********* LOGIN ******************************************
   //   async login(data: LoginFormData) {
   // try {
   //   const response = await api.requestLogin(data);
@@ -21,6 +22,18 @@ export const auth = {
   //   localStorage.setItem("accessToken", responseData.tokens.access);
   //   localStorage.setItem("accessToken", responseData.tokens.refresh);
   //     } catch (e) {
+  //       throw e;
+  //     }
+  //   },
+
+  // ********* SING UP ******************************************
+  // async Singup(data: SingupFormData) {
+  // try {
+  // const response = await api.requestSignup(data);
+  // const responseData =response.data as SingupFormData
+  // localStorage.setItem("accessToken", responseData.tokens.access);
+  // localStorage.setItem("accessToken", responseData.tokens.refresh);
+  // }catch (e) {
   //       throw e;
   //     }
   //   },

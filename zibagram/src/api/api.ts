@@ -1,8 +1,11 @@
-import axios from "axios";
-import { LoginFormData } from "../@types/type";
+import { LoginFormData, SingupFormData } from "../@types/type";
+import { aunthInstance } from "./axios";
 
 export const api = {
   requestLogin(payload: LoginFormData) {
-    return axios.post("https://fakestoreapi.com/auth/login/", payload)
+    return aunthInstance.post("/auth/login/", payload)
   },
+  requestSignup(payload: SingupFormData){
+    return aunthInstance.post("/register/",payload)
+  }
 };

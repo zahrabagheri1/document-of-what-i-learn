@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { SingupFormData } from "../../@types/type";
+// import { auth } from "../../auth";
 
 export default function SingupForm() {
   const { register, handleSubmit } = useForm<SingupFormData>();
@@ -10,6 +11,18 @@ export default function SingupForm() {
       navigate("/");
     }
   }
+
+  // async function onSubmit() {
+  //   try {
+  //     await auth.singup(data)
+  //     navigate("/")
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col basis-3/4">
       <div className="flex flex-col gap-2">
