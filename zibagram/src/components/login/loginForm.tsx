@@ -1,29 +1,45 @@
-import axios from "axios";
+
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LoginFormData } from "../../@types/type";
+// import { api } from "../../api/api";
+// import axios from "axios";
+// import { aunthInstance } from "../../api/axios";
 
-interface LoginFormData {
-  email: string;
-  password: string;
-}
+
 export default function LoginForm() {
   const { register, handleSubmit } = useForm<LoginFormData>();
   const navigate = useNavigate()
-  async function oneSubmit(data: LoginFormData) {
-    try {
-      const response = await axios.post("/auth/login'", data)
-      console.log(response.data)
+  // async function oneSubmit(data: LoginFormData) {
+  //   console.log(data)
+  //   try {
+  //     const response = await api.requestLogin(data)
+  //     console.log(response)
+  //     navigate("/")
+  //   } catch (error) {
+  //     console.log("Error Occured!")
+  //     console.log(error)
+  //   }
+  // }
+
+  function onSubmit(data: LoginFormData) {
+    // const json = JSON.stringify(data);
+    // const data1 ={
+    //   username: "json",
+    //   password: "m38rmF$"
+    // }
+    // const json1 = JSON.stringify(data1);
+    // aunthInstance.post('auth/login', { json1 })
+    if (data.email === "admin@gamial.com" && data.password ==="123456") {
       navigate("/")
-    } catch (error) {
-      
-      console.log("Error Occured!")
-      console.log(error)
+    } else {
+      alert("email or password not currect")
     }
   }
 
   return (
     <form
-      onSubmit={handleSubmit(oneSubmit)}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col basis-3/4"
     >
       <div className="flex flex-col gap-2">
@@ -46,7 +62,7 @@ export default function LoginForm() {
             className="text-md rounded-md py-2 pl-10 pr-2 w-[100%]"
             placeholder="youremail@gmail.com"
             autoComplete="email"
-            {...(register("email"), { required: true })}
+            {...(register("email"))}
           />
         </div>
       </div>
@@ -73,7 +89,7 @@ export default function LoginForm() {
             className="text-md rounded-md py-2 pl-10 pr-2 w-[100%]"
             placeholder="your password"
             autoComplete="current-password"
-            {...(register("password"), { required: true })}
+            {...(register("password"))}
           />
         </div>
       </div>
