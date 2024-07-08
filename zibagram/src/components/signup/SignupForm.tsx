@@ -1,25 +1,25 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { SignupFormData } from "../../@types/type";
-import { auth } from "../../auth";
+// import { auth } from "../../auth";
 
 export default function SignupForm() {
   const { register, handleSubmit } = useForm<SignupFormData>();
   const navigate = useNavigate();
-  // function onSubmit(data: SignupFormData) {
-  //   if (data.username && data.email && data.password) {
-  //     navigate("/");
-  //   }
-  // }
-
-  async function onSubmit(data: SignupFormData) {
-    try {
-      await auth.Signup(data)
-      navigate("/")
-    } catch (error) {
-      console.log(error)
+  function onSubmit(data: SignupFormData) {
+    if (data.username && data.email && data.password) {
+      navigate("../profile");
     }
   }
+
+  // async function onSubmit(data: SignupFormData) {
+  //   try {
+  //     await auth.Signup(data)
+  //     navigate("/")
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
 
 

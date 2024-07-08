@@ -17,3 +17,11 @@ export const aunthInstance = axios.create({
 //       return aunthInstance.post("/auth/login/", payload)
 //     },
 //   };
+
+export const axiosInstance = axios.create({
+  baseURL: "/api",
+  timeout: 3000,
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  },
+});
