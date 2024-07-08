@@ -1,7 +1,7 @@
 import { redirect } from "react-router-dom";
 import { auth } from "../../auth";
 
-export default function singupLaosder() {
+export default function signupLaosder() {
     if (!auth.isAuthenticated()) {
         return redirect("/")
     }

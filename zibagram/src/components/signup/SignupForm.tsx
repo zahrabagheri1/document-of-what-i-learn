@@ -1,25 +1,25 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { SingupFormData } from "../../@types/type";
-// import { auth } from "../../auth";
+import { SignupFormData } from "../../@types/type";
+import { auth } from "../../auth";
 
-export default function SingupForm() {
-  const { register, handleSubmit } = useForm<SingupFormData>();
+export default function SignupForm() {
+  const { register, handleSubmit } = useForm<SignupFormData>();
   const navigate = useNavigate();
-  function onSubmit(data: SingupFormData) {
-    if (data.username && data.email && data.password) {
-      navigate("/");
-    }
-  }
-
-  // async function onSubmit() {
-  //   try {
-  //     await auth.singup(data)
-  //     navigate("/")
-  //   } catch (error) {
-  //     console.log(error)
+  // function onSubmit(data: SignupFormData) {
+  //   if (data.username && data.email && data.password) {
+  //     navigate("/");
   //   }
   // }
+
+  async function onSubmit(data: SignupFormData) {
+    try {
+      await auth.Signup(data)
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 

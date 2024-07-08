@@ -10,7 +10,7 @@ export default function Login() {
       <LoginForm />
       <div className="w-[100%] flex flex-row gap-2 items-center ">
         <p className="">You don't have acount?</p>
-        <a onClick={() => navigate('/singup')} className="">
+        <a onClick={() => navigate('/signup')} className="">
           create acount
         </a>
       </div>

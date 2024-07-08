@@ -11,7 +11,7 @@ export interface LoginResponse {
     refresh: string;
   };
 }
-export interface SingupFormData {
+export interface SignupFormData {
   username: string;
   email: string;
   password: string;
