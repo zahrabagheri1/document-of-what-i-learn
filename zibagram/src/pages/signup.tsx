@@ -1,4 +1,4 @@
-import { redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SignupForm from "../components/signup/SignupForm";
 import AuthLayout from "../layout/authLayout";
 
@@ -9,9 +9,9 @@ export default function Signup() {
       <SignupForm />
       <div className="w-[100%] flex flex-row gap-2 items-center ">
         <p className="">You have acount?</p>
-        <a onClick={() => redirect("/")} className="">
+        <Link to={'/login'} className="">
           Login with your acount
-        </a>
+        </Link>
       </div>
     </AuthLayout>
   )
