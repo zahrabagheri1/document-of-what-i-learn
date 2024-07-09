@@ -41,3 +41,16 @@ export interface ProfileLoaderData {
   bio: string;
   avatar: string;
 }
+
+export interface Post {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  image: string;
+}
+
+export interface HomeLoaderData {
+  posts: Post[];
+}

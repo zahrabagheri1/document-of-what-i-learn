@@ -42,4 +42,9 @@ export const api = {
   requsetFetchAvatar() {
     return axiosInstance.get("/profile/");
   },
+
+  requestFetchPosts(){
+    // return axiosInstance.get("/post/")
+    return aunthInstance.get("/products/")
+  }
 };
