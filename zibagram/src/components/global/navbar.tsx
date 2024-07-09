@@ -1,17 +1,25 @@
 import { Link } from "react-router-dom";
 import { auth } from "../../auth";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Navbar() {
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext)
+
+  setIsAuthenticated(true)
+  
   function onLogout() {
     auth.logout();
+    setIsAuthenticated(false)
   }
+
   return (
     <header className="relative bg-white p-3 shadow-md w-full flex justify-between">
       <Link to={"/"}>
         <h1 className="text-3xl text-blue-600 ">Zibageram</h1>
       </Link>
 
-      <div className={auth.isAuthenticated()? "flex flex-row": "hidden"}>
+      <div className={isAuthenticated ? "flex flex-row" : "hidden"}>
         <Link to={"/profile"}>
           <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-none font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 flex flex-row gap-2 items-center justify-center">
             <svg

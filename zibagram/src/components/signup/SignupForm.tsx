@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { SignupFormData } from "../../@types/type";
+// import { useContext } from "react";
+// import { AuthContext } from "../../context/AuthContext";
 // import { auth } from "../../auth";
 
 export default function SignupForm() {
   const { register, handleSubmit } = useForm<SignupFormData>();
   const navigate = useNavigate();
+  // const { setIsAuthenticated } = useContext(AuthContext)
+
   function onSubmit(data: SignupFormData) {
     if (data.username && data.email && data.password) {
       navigate("../profile");
@@ -15,6 +19,7 @@ export default function SignupForm() {
   // async function onSubmit(data: SignupFormData) {
   //   try {
   //     await auth.Signup(data)
+  //     setIsAuthenticated(true)
   //     navigate("/")
   //   } catch (error) {
   //     console.log(error)
