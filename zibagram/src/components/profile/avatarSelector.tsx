@@ -3,9 +3,15 @@ import avatar from "/image/avatar.png";
 import { api } from "../../api/api";
 import { AvatarResponse } from "../../@types/type";
 
-export default function AvatarSelector() {
+interface AvatarSelectorProps {
+    defaultAvatar: string
+}
+
+export default function AvatarSelector({ defaultAvatar }: AvatarSelectorProps) {
     const inputRef = useRef<HTMLInputElement>(null)
-    const [imageURL, setImageURL] = useState(avatar)
+    const [imageURL, setImageURL] = useState(
+        defaultAvatar ? defaultAvatar : avatar
+    )
     const [loading, setLoading] = useState(false)
 
     function onclickButton() {

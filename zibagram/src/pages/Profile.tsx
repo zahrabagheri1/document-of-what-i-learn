@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import AvatarSelector from "../components/profile/avatarSelector"
 import BioForm from "../components/profile/bioForm";
-import { BioResponse } from "../@types/type";
+import { ProfileLoaderData } from "../@types/type";
 
 export default function Profile() {
     const data = useLoaderData()
@@ -12,8 +12,8 @@ export default function Profile() {
             <h1 className="text-3xl text-blue-700">information user</h1>
 
             <div className="flex pt-8 ">
-                <AvatarSelector />
-                <BioForm defaultBio={(data as BioResponse).bio} />
+                <AvatarSelector defaultAvatar={(data as ProfileLoaderData).avatar.replace("5173", "8000")} />
+                <BioForm defaultBio={(data as ProfileLoaderData).bio} />
             </div>
         </div>
     );

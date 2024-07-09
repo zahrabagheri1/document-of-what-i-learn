@@ -28,3 +28,8 @@ export interface BioFormData {
 export interface BioResponse {
   bio: string;
 }
+
+export interface ProfileLoaderData {
+  bio: string;
+  avatar: string;
+}

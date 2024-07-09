@@ -26,7 +26,11 @@ export const api = {
   },
 
   requsetFetchBio() {
-    return axiosInstance.get("/profile/");
+    return axiosInstance.get("/profile/avatar/");
   },
 
+    
+  requsetFetchAvatar() {
+    return axiosInstance.get("/profile/");
+  },
 };
