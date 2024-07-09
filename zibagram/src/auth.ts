@@ -4,6 +4,7 @@
 
 import { SignupFormData } from "./@types/type";
 import { api } from "./api/api";
+import { router } from "./router";
 
 export const auth = {
   isAuthenticated() {
@@ -43,5 +44,11 @@ export const auth = {
 
   async Signup(data: SignupFormData) {
     await api.requestSignup(data);
+  },
+
+  logout() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    router.navigate("/login");
   },
 };

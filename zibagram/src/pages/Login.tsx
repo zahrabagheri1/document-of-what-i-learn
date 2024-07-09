@@ -11,7 +11,7 @@ export default function Login() {
       <div className="w-[100%] flex flex-row gap-2 items-center ">
         <p className="">You don't have acount?</p>
         <Link to={'/signup'} className="">
-          create acount
+          create account
         </Link>
       </div>
     </AuthLayout>
