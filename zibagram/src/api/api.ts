@@ -1,4 +1,10 @@
-import { BioFormData, LoginFormData, SignupFormData } from "../@types/type";
+import {
+  BioFormData,
+  LoginFormData,
+  RefreshTokenData,
+  SignupFormData,
+} from "../@types/type";
+
 import { aunthInstance, axiosInstance } from "./axios";
 
 export const api = {
@@ -8,6 +14,10 @@ export const api = {
 
   requestSignup(payload: SignupFormData) {
     return aunthInstance.post("/users/", payload);
+  },
+
+  requestRefreshToken(payload: RefreshTokenData) {
+    return aunthInstance.post("/token/refresh/", payload);
   },
 
   requestChangeAvatar(avatar: Blob) {
@@ -29,7 +39,6 @@ export const api = {
     return axiosInstance.get("/profile/avatar/");
   },
 
-    
   requsetFetchAvatar() {
     return axiosInstance.get("/profile/");
   },
