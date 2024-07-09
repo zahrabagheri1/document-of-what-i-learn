@@ -25,3 +25,6 @@ export const axiosInstance = axios.create({
     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   },
 });
+
+// request -> 401 -> refresh -> accessToken -> replace -> retry request
+// request -> 401 -> refresh -> error -> redirect login
