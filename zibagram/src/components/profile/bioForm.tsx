@@ -3,10 +3,13 @@ import { BioFormData } from "../../@types/type";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
-export default function BioForm() {
+interface BioFromProps {
+    defaultBio: string
+}
+export default function BioForm({ defaultBio }: BioFromProps) {
     const { register, handleSubmit } = useForm<BioFormData>();
     const navigate = useNavigate()
-   
+
     async function onSubmit(data: BioFormData) {
         try {
             await api.requestChangeBio(data)
@@ -32,6 +35,7 @@ export default function BioForm() {
                     className="basis-2/3 p-2.5 w-full bg-gray-50 border border-solid rounded border-white focus:border-blue-500 "
                     placeholder="Optional description about yourself"
                     {...register("bio")}
+                    defaultValue={defaultBio}
                 />
 
                 <button

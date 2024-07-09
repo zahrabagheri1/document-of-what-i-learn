@@ -24,4 +24,9 @@ export const api = {
   requestChangeBio(payload: BioFormData) {
     return axiosInstance.put("/profile/", payload);
   },
+
+  requsetFetchBio() {
+    return axiosInstance.get("/profile/");
+  },
+
 };
