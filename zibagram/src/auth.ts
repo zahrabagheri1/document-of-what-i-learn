@@ -25,18 +25,20 @@ export const auth = {
   //   console.log(responseData.tokens);
   //   localStorage.setItem("accessToken", responseData.tokens.access);
   //   localStorage.setItem("accessToken", responseData.tokens.refresh);
+  //   localStorage.setItem("username",responseData.username)
   //     } catch (e) {
-  //       throw e;
-  //     }
-  //   },
-
-  // ********* SING UP ******************************************
-  // async Signup(data: SignupFormData) {
-  // try {
-  // const response = await api.requestSignup(data);
-  // const responseData =response.data as SignupFormData
-  // localStorage.setItem("accessToken", responseData.tokens.access);
-  // localStorage.setItem("accessToken", responseData.tokens.refresh);
+    //       throw e;
+    //     }
+    //   },
+    
+    // ********* SING UP ******************************************
+    // async Signup(data: SignupFormData) {
+      // try {
+        // const response = await api.requestSignup(data);
+        // const responseData =response.data as SignupFormData
+        // localStorage.setItem("accessToken", responseData.tokens.access);
+        // localStorage.setItem("accessToken", responseData.tokens.refresh);
+        // localStorage.setItem("username",responseData.username)
   // }catch (e) {
   //       throw e;
   //     }
@@ -49,6 +51,7 @@ export const auth = {
   logout() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("username");
     router.navigate("/login");
   },
 };

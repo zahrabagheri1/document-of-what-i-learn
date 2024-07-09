@@ -13,7 +13,7 @@ export default function Home() {
     <div className="flex flex-row  gap-5 flex-wrap w-[90%] m-auto">
       {posts.map((post) => (
 
-        <Post title={post.title} description={post.description} image={post.image} key={post.id} category={post.category} />
+        <Post title={post.title} description={post.description} image={post.image} key={post.id} category={post.category} auther={"post.auther"} />
       ))}
 
     </div>
