@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { DevTool } from '@hookform/devtools';
 
 function YouTubeFrom() {
 
   const form = useForm();
-  const { register } = form;
+  const { register, control } = form;
   // const { name, ref, onChange, onBlur } = register('username');
 
 
@@ -25,6 +26,8 @@ function YouTubeFrom() {
 
         <button type='submit'>Submit</button>
       </form>
+
+      <DevTool control={control} />
     </div>
   )
 }
