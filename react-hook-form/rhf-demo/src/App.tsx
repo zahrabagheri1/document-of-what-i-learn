@@ -1,10 +1,13 @@
 
 import './App.css'
+import YouTubeFrom from './components/YouTubeFrom'
 
 function App() {
 
   return (
-    <div> Hi</div>
+    <div> 
+      <YouTubeFrom />
+    </div>
   )
 }
 
