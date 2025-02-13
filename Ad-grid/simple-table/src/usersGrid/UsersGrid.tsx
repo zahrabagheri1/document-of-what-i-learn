@@ -6,25 +6,12 @@ import { UserInterface } from "./user.interface";
 import { ColDef } from 'ag-grid-community'
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 
-interface CountryValue {
-    name: string;
-    flag: string;
-}
-
-const CountryFormatter = (props: CustomCellRendererProps<UserInterface, CountryValue>) => {
-    if (!props.value || !props.value.flag || !props.value.name) {
-        return <span>Invalid country data</span>;
-    }
-
+const CountryFormatter = (props: CustomCellRendererProps) => {
     return (
-        <span 
-            style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
-            title={`Country: ${props.value.name}`}
-        >
-            <i className={`fi fi-${props.value.flag.toLowerCase()}`} aria-hidden="true" />
-            <span>{props.value.name}</span>
+        <span>
+            <i className={`fi fi-${props.value.flag}`}></i> {props.value.name}
         </span>
-    );
+    )
 }
 
 const UsersGrid = () => {

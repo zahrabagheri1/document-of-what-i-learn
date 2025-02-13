@@ -1,0 +1,15 @@
+.ag-theme-quartz {
+  /* --ag-foreground-color: #000000;     */
+  --ag-background-color: #d2d2b848;
+  /* --ag-header-background-color: #157729; */
+  /* --ag-row-hover-color: #064d12; */
+}
+
+
+.green-cell {
+  background-color: #4f764f;
+}
+
+.red-row {
+  background-color: #941e1e;
+}
