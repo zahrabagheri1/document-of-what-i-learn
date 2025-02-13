@@ -2,15 +2,17 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
-function YouTubeFrom() {
+let renderCount = 0;
 
+function YouTubeFrom() {
   const form = useForm();
   const { register, control } = form;
   // const { name, ref, onChange, onBlur } = register('username');
 
-
+  renderCount++;
   return (
     <div>
+      <h1>YouTube From ({renderCount/2})</h1>
       <form>
         <label htmlFor="username">Username</label>
         <input type="text" id="username" 
