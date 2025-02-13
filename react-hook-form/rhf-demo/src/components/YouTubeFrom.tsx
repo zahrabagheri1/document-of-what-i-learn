@@ -23,16 +23,21 @@ function YouTubeFrom() {
   return (
     <div>
       <h1>YouTube From ({renderCount / 2})</h1>
-      
-      <form onSubmit={handleSubmit(onSubmit)}>
+
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label htmlFor="username">Username</label>
         <input type="text" id="username"
-          {...register('username')}
+          {...register('username', { required: "Username is required" })}
         // name={name} ref={ref} onChange={onChange} onBlur={onBlur} 
         />
 
         <label htmlFor="email">E-mail</label>
-        <input type="email" id="email" {...register('email')} />
+        <input type="email" id="email" {...register('email', {
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: 'Invalid email format'
+          }
+        })} />
 
         <label htmlFor="channel">Channel</label>
         <input type="text" id="channel" {...register('channel')} />
