@@ -11,7 +11,22 @@ type FormData = {
 }
 
 function YouTubeFrom() {
-  const form = useForm<FormData>();
+  const form = useForm<FormData>({
+    // defaultValues: {
+    //   username: "Batman",
+    //   email: "",
+    //   channel: ""
+    // }
+    // defaultValues: async () => {
+    //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
+    //   const data = await response.json();
+    //   return {
+    //     username: "batman",
+    //     email: data.email,
+    //     channel: data.channel
+    //   }
+    // }
+  });
   const { register, control, handleSubmit, formState } = form;
   // const { name, ref, onChange, onBlur } = register('username');
   const { errors } = formState;
@@ -58,6 +73,7 @@ function YouTubeFrom() {
           })} />
           <p className='error'>{errors.email?.message}</p>
         </div>
+
 
         {/* Channel */}
         <div className='form-control'>
