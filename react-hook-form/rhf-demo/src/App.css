@@ -5,6 +5,21 @@
   text-align: center;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 label {
   font-weight: bold;
   display: flex;
@@ -31,4 +46,15 @@ border-radius: 4px;
 
 .form-control {
   margin-bottom: 20px;
+}
+
+.form-control-phone {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.form button {
+  flex: 12;
+  margin-top: 10px;
 }
