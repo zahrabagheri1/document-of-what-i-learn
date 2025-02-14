@@ -130,11 +130,19 @@ function YouTubeFrom() {
           <div>
             {
               fields.map((field, index) => {
-                return (<div className='form-control' key={field.id}>
-                  <input type='text' {...register(`phNumbers.${index}.number` as const)} />
-                  </div>)
+                return (
+                  <div className='form-control' key={field.id}>
+                    <input type='text' {...register(`phNumbers.${index}.number` as const)} />
+                    {
+                      index > 0 && (
+                        <button type='button' onClick={()=> remove(index)}>Remove</button>
+                      )
+                    }
+                  </div>
+                )
               })
             }
+            <button  type='button' onClick={() => append({ number: "" })}>Add phone number</button>
           </div>
         </div>
 
