@@ -45,7 +45,15 @@ function YouTubeFrom() {
     //   }
     // }
   });
-  const { register, control, handleSubmit, formState, watch, getValues } = form;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue
+  } = form;
   // const { name, ref, onChange, onBlur } = register('username');
   const { errors } = formState;
 
@@ -60,6 +68,14 @@ function YouTubeFrom() {
 
   const handleGetValue = () => {
     console.log("Get Value", getValues(["username", "channel"]))
+  }
+
+  const handleSetValue = () => {
+    setValue("username", "", {
+      shouldDirty: true,
+      shouldValidate: true,
+      shouldTouch: true
+    })
   }
 
   // const watchUsername = watch(['username', 'email']);
@@ -200,6 +216,7 @@ function YouTubeFrom() {
 
         <button type='submit'>Submit</button>
         <button type='button' onClick={handleGetValue}>Get value</button>
+        <button type='button' onClick={handleSetValue}>Set value</button>
       </form>
 
       <DevTool control={control} />
