@@ -56,8 +56,20 @@ function YouTubeFrom() {
   } = form;
 
   // const { name, ref, onChange, onBlur } = register('username');
-  const { errors, touchedFields, dirtyFields , isDirty, isValid} = formState;
-  console.log({touchedFields, dirtyFields, isDirty, isValid})
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount
+  } = formState;
+
+  console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount})
+  // console.log({touchedFields, dirtyFields, isDirty, isValid})
 
 
   const { fields, append, remove } = useFieldArray({
@@ -225,7 +237,7 @@ function YouTubeFrom() {
           </div>
         </div>
 
-        <button type='submit' disabled={!isDirty || !isValid}>Submit</button>
+        <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
         <button type='button' onClick={handleGetValue}>Get value</button>
         <button type='button' onClick={handleSetValue}>Set value</button>
       </form>
