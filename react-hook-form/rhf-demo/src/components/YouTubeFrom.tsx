@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm, useFieldArray } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
@@ -45,7 +45,7 @@ function YouTubeFrom() {
     //   }
     // }
   });
-  const { register, control, handleSubmit, formState } = form;
+  const { register, control, handleSubmit, formState, watch } = form;
   // const { name, ref, onChange, onBlur } = register('username');
   const { errors } = formState;
 
@@ -58,10 +58,23 @@ function YouTubeFrom() {
     console.log("Form Submitted", data)
   }
 
+  // const watchUsername = watch(['username', 'email']);
+  // const watchForm = watch();
+
+  useEffect(() => {
+    const subscription = watch((value) => {
+      console.log(value)
+    })
+
+    return ()=> subscription.unsubscribe()
+  },[watch])
+
   renderCount++;
   return (
     <div>
       <h1>YouTube From ({renderCount / 2})</h1>
+      {/* <h1>Username: {watchUsername}</h1> */}
+      {/* <h1>Form: {JSON.stringify(watchForm)}</h1> */}
 
       <form className='form' onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className='form-group'>
