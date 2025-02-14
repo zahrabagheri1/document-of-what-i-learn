@@ -8,15 +8,23 @@ type FormData = {
   username: string;
   email: string;
   channel: string;
+  social: {
+    twitter: string;
+    facebook: string;
+  }
 }
 
 function YouTubeFrom() {
   const form = useForm<FormData>({
-    // defaultValues: {
-    //   username: "Batman",
-    //   email: "",
-    //   channel: ""
-    // }
+    defaultValues: {
+      username: "Batman",
+      email: "",
+      channel: "",
+      social: {
+        twitter: "",
+        facebook: ""
+      }
+    }
     // defaultValues: async () => {
     //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
     //   const data = await response.json();
@@ -80,6 +88,18 @@ function YouTubeFrom() {
           <label htmlFor="channel">Channel</label>
           <input type="text" id="channel" {...register('channel', { required: { value: true, message: "Channel is required" } })} />
           <p className='error'>{errors.channel?.message}</p>
+        </div>
+
+
+        {/* Social */}
+        <div className='form-control'>
+          <label htmlFor="twitter">Twitter</label>
+          <input type="text" id="twitter" {...register('social.twitter')} />
+        </div>
+
+        <div className='form-control'>
+          <label htmlFor="facebook">Facebook</label>
+          <input type="text" id="facebook" {...register('social.facebook')} />
         </div>
 
         <button type='submit'>Submit</button>
