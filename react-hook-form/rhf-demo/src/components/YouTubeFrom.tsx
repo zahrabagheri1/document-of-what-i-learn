@@ -52,7 +52,8 @@ function YouTubeFrom() {
     formState,
     watch,
     getValues,
-    setValue
+    setValue,
+    reset
   } = form;
 
   // const { name, ref, onChange, onBlur } = register('username');
@@ -105,6 +106,13 @@ function YouTubeFrom() {
   //     console.log(value)
   //   })
 
+  useEffect(()=>{
+    if(isSubmitSuccessful){
+      reset()
+    }
+  },[isSubmitSuccessful, reset])
+
+  
   //   return () => subscription.unsubscribe()
   // }, [watch])
 
@@ -237,9 +245,12 @@ function YouTubeFrom() {
           </div>
         </div>
 
-        <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
-        <button type='button' onClick={handleGetValue}>Get value</button>
-        <button type='button' onClick={handleSetValue}>Set value</button>
+        <div className='form-control-button'>
+          <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
+          <button type='button' onClick={handleGetValue}>Get value</button>
+          <button type='button' onClick={() => reset()}>Reset</button>
+          <button type='button' onClick={handleSetValue}>Set value</button>
+        </div>
       </form>
 
       <DevTool control={control} />
