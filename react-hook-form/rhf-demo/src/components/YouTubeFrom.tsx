@@ -45,7 +45,7 @@ function YouTubeFrom() {
     //   }
     // }
   });
-  const { register, control, handleSubmit, formState, watch } = form;
+  const { register, control, handleSubmit, formState, watch, getValues } = form;
   // const { name, ref, onChange, onBlur } = register('username');
   const { errors } = formState;
 
@@ -58,16 +58,20 @@ function YouTubeFrom() {
     console.log("Form Submitted", data)
   }
 
+  const handleGetValue = () => {
+    console.log("Get Value", getValues(["username", "channel"]))
+  }
+
   // const watchUsername = watch(['username', 'email']);
   // const watchForm = watch();
 
-  useEffect(() => {
-    const subscription = watch((value) => {
-      console.log(value)
-    })
+  // useEffect(() => {
+  //   const subscription = watch((value) => {
+  //     console.log(value)
+  //   })
 
-    return ()=> subscription.unsubscribe()
-  },[watch])
+  //   return () => subscription.unsubscribe()
+  // }, [watch])
 
   renderCount++;
   return (
@@ -195,6 +199,7 @@ function YouTubeFrom() {
         </div>
 
         <button type='submit'>Submit</button>
+        <button type='button' onClick={handleGetValue}>Get value</button>
       </form>
 
       <DevTool control={control} />
