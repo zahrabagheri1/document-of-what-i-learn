@@ -54,8 +54,11 @@ function YouTubeFrom() {
     getValues,
     setValue
   } = form;
+
   // const { name, ref, onChange, onBlur } = register('username');
-  const { errors } = formState;
+  const { errors, touchedFields, dirtyFields , isDirty} = formState;
+  console.log({touchedFields, dirtyFields, isDirty})
+
 
   const { fields, append, remove } = useFieldArray({
     name: 'phNumbers',
