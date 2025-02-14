@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useForm, useFieldArray } from 'react-hook-form';
+import { useForm, useFieldArray, FieldErrors } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
 let renderCount = 0;
@@ -56,8 +56,20 @@ function YouTubeFrom() {
   } = form;
 
   // const { name, ref, onChange, onBlur } = register('username');
-  const { errors, touchedFields, dirtyFields , isDirty} = formState;
-  console.log({touchedFields, dirtyFields, isDirty})
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount
+  } = formState;
+
+  console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount})
+  // console.log({touchedFields, dirtyFields, isDirty, isValid})
 
 
   const { fields, append, remove } = useFieldArray({
@@ -67,6 +79,10 @@ function YouTubeFrom() {
 
   const onSubmit = (data: FormData) => {
     console.log("Form Submitted", data)
+  }
+
+  const onError = (errors: FieldErrors<FormData>) => {
+    console.log("Form Error", errors)
   }
 
   const handleGetValue = () => {
@@ -99,7 +115,7 @@ function YouTubeFrom() {
       {/* <h1>Username: {watchUsername}</h1> */}
       {/* <h1>Form: {JSON.stringify(watchForm)}</h1> */}
 
-      <form className='form' onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form className='form' onSubmit={handleSubmit(onSubmit, onError)} noValidate>
         <div className='form-group'>
           {/* Username */}
           <div className='form-control'>
@@ -221,7 +237,7 @@ function YouTubeFrom() {
           </div>
         </div>
 
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
         <button type='button' onClick={handleGetValue}>Get value</button>
         <button type='button' onClick={handleSetValue}>Set value</button>
       </form>
