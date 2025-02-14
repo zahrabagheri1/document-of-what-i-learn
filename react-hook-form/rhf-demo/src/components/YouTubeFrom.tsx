@@ -12,6 +12,7 @@ type FormData = {
     twitter: string;
     facebook: string;
   }
+  phoneNumbers: string[];
 }
 
 function YouTubeFrom() {
@@ -23,7 +24,8 @@ function YouTubeFrom() {
       social: {
         twitter: "",
         facebook: ""
-      }
+      },
+      phoneNumbers: ["", ""]
     }
     // defaultValues: async () => {
     //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
@@ -100,6 +102,17 @@ function YouTubeFrom() {
         <div className='form-control'>
           <label htmlFor="facebook">Facebook</label>
           <input type="text" id="facebook" {...register('social.facebook')} />
+        </div>
+
+        {/* Phone Numbers */}
+        <div className='form-control'>
+          <label htmlFor='primary-phone'>Primary Phone Number</label>
+          <input type="text" id="primary-phone" {...register('phoneNumbers.0')} />
+        </div>
+
+        <div className='form-control'>
+          <label htmlFor='secondary-phone'>Secondary Phone Number</label>
+          <input type="text" id="secondary-phone" {...register('phoneNumbers.1')} />
         </div>
 
         <button type='submit'>Submit</button>
