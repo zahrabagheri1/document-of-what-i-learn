@@ -34,7 +34,15 @@ function YouTubeFrom() {
       phNumbers: [{ number: "" }],
       age: 0,
       dob: new Date()
-    }
+    },
+    // mode: "onBlur", //? validate when the user leaves the field
+    // mode: 'onChange' //? validate when the user changes the field
+    // mode: 'onTouched', //? validate when the user touches the field - when we use this mode, it can lead to a performance issue and multiple re-renders
+    // mode: 'onValid', //? validate when the user enters a valid value
+    // mode: 'onInvalid', //? validate when the user enters an invalid value
+    // mode: 'onSubmit', //? default mode
+    mode: 'all', //? validate all the time
+
     // defaultValues: async () => {
     //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
     //   const data = await response.json();
@@ -52,7 +60,9 @@ function YouTubeFrom() {
     formState,
     watch,
     getValues,
-    setValue
+    setValue,
+    reset,
+    trigger
   } = form;
 
   // const { name, ref, onChange, onBlur } = register('username');
@@ -105,6 +115,13 @@ function YouTubeFrom() {
   //     console.log(value)
   //   })
 
+  useEffect(()=>{
+    if(isSubmitSuccessful){
+      reset()
+    }
+  },[isSubmitSuccessful, reset])
+
+
   //   return () => subscription.unsubscribe()
   // }, [watch])
 
@@ -116,7 +133,6 @@ function YouTubeFrom() {
       {/* <h1>Form: {JSON.stringify(watchForm)}</h1> */}
 
       <form className='form' onSubmit={handleSubmit(onSubmit, onError)} noValidate>
-        <div className='form-group'>
           {/* Username */}
           <div className='form-control'>
             <label htmlFor="username">Username</label>
@@ -144,6 +160,11 @@ function YouTubeFrom() {
                 },
                 notBlackListed: (fieldValue) => {
                   return !fieldValue.endsWith("baddomain.com") || "This domain is not supported"
+                },
+                emailAvailable: async(fieldValue)=>{
+                  const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${fieldValue}`)
+                  const data = await response.json();
+                  return data.length === 0 || "Email is already exists"
                 }
               }
             })} />
@@ -221,7 +242,7 @@ function YouTubeFrom() {
               {
                 fields.map((field, index) => {
                   return (
-                    <div className='form-control form-control-phone' key={field.id}>
+                    <div className='form-control' key={field.id}>
                       <input type='text' {...register(`phNumbers.${index}.number` as const)} />
                       {
                         index > 0 && (
@@ -235,11 +256,13 @@ function YouTubeFrom() {
               <button type='button' onClick={() => append({ number: "" })}>Add phone number</button>
             </div>
           </div>
-        </div>
 
-        <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
-        <button type='button' onClick={handleGetValue}>Get value</button>
-        <button type='button' onClick={handleSetValue}>Set value</button>
+          {/* <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button> */}
+          <button type='submit' disabled={!isDirty || isSubmitting}>Submit</button>
+          <button type='button' onClick={handleGetValue}>Get value</button>
+          <button type='button' onClick={() => reset()}>Reset</button>
+          <button type='button' onClick={handleSetValue}>Set value</button>
+          <button type='button' onClick={() => trigger("channel")}>Trigger</button>
       </form>
 
       <DevTool control={control} />
