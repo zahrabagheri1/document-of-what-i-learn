@@ -6,7 +6,7 @@ const fetchSuperHeroes = () => {
 };
 
 function RQSuperHeroesPage() {
-  const { isLoading, data, isError, error, isFetching } = useQuery({
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery({
     queryKey: ["super-heroes"],
     //   queryFn: () => {
     //     return axios.get("http://localhost:4000/superheroes");
@@ -18,12 +18,12 @@ function RQSuperHeroesPage() {
     // refetchOnWindowFocus: false,
     // refetchInterval: 2000, // 2 seconds after the data is stale, it will be refetched
     // refetchIntervalInBackground: true, // 2 seconds after the data is stale, it will be refetched
-
+    enabled: false, // if you want to fetch the data manually, you can use this option
   });
 
   console.log({ isLoading, isFetching });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <h2>Loading...</h2>;
   }
 
@@ -34,6 +34,7 @@ function RQSuperHeroesPage() {
   return (
     <>
       <h1>RQ Super Heroes Page</h1>
+      <button onClick={() => refetch()}>Fetch Super Heroes</button>
       {data?.data.map((hero) => (
         <div key={hero.name}>{hero.name}</div>
       ))}
