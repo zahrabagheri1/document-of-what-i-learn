@@ -2,10 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes");
+  return axios.get("http://localhost:4000/superheroes ");
 };
 
 function RQSuperHeroesPage() {
+  // onSuccess and onError are optional
+  const onSuccess = (data) => {
+    console.log("Perform side effect after data fetching", data);
+  };
+
+  const onError = (error) => {
+    console.log("Perform side effect after encountering an error", error);
+  };
+
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery({
     queryKey: ["super-heroes"],
     //   queryFn: () => {
@@ -18,9 +27,18 @@ function RQSuperHeroesPage() {
     // refetchOnWindowFocus: false,
     // refetchInterval: 2000, // 2 seconds after the data is stale, it will be refetched
     // refetchIntervalInBackground: true, // 2 seconds after the data is stale, it will be refetched
-    enabled: false, // if you want to fetch the data manually, you can use this option
+    // enabled: false, // if you want to fetch the data manually, you can use this option
+    // onSuccess: onSuccess,
+    // onError: onError,
+    onSuccess,
+    onError,
+    select: (data) => {
+      const superheroNames = data.data.map((hero) => hero.name);
+      return superheroNames;
+    },
   });
 
+  // console.log(data, error);
   console.log({ isLoading, isFetching });
 
   if (isLoading || isFetching) {
@@ -35,8 +53,12 @@ function RQSuperHeroesPage() {
     <>
       <h1>RQ Super Heroes Page</h1>
       <button onClick={() => refetch()}>Fetch Super Heroes</button>
-      {data?.data.map((hero) => (
+      {/* {data?.data.map((hero) => (
         <div key={hero.name}>{hero.name}</div>
+      ))} */}
+
+      {data?.map((heroName) => (
+        <div key={heroName}>{heroName}</div>
       ))}
     </>
   );
