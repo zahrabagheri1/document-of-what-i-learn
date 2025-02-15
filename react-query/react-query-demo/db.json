@@ -23,7 +23,7 @@
         },
         {
             "id": 4,
-            "name": "Flash",    
+            "name": "Flash",
             "location": "Central City",
             "gender": "Male",
             "age": 24
@@ -65,73 +65,10 @@
         },
         {
             "id": 10,
-            "name": "Batwoman", 
+            "name": "Batwoman",
             "location": "Gotham City",
             "gender": "Female",
             "age": 33
-        },
-        {
-            "id": 11,
-            "name": "Superman",
-            "location": "Metropolis",
-            "gender": "Male",
-            "age": 30
-        },
-        {
-            "id": 12,
-            "name": "Batman",
-            "location": "Gotham City",
-            "gender": "Male",
-            "age": 35
-        },
-        {
-            "id": 13,
-            "name": "Wonder Woman",
-            "location": "Themyscira",
-            "gender": "Female",
-            "age": 28
-        },
-        {
-            "id": 14,
-            "name": "Flash",
-            "location": "Central City",
-            "gender": "Male",
-            "age": 24
-        },
-        {
-            "id": 15,
-            "name": "Aquaman",
-            "location": "Atlantis",
-            "gender": "Male",
-            "age": 32
-        },
-        {
-            "id": 16,
-            "name": "Cyborg",
-            "location": "Star City",
-            "gender": "Male",
-            "age": 27
-        },
-        {
-            "id": 17,
-            "name": "Green Lantern",
-            "location": "Coast City",
-            "gender": "Male",
-            "age": 31
-        },
-        {
-            "id": 18,
-            "name": "Supergirl",
-            "location": "National City",
-            "gender": "Female",
-            "age": 29
-        },
-        {
-            "id": 19,
-            "name": "The Flash",
-            "location": "Central City",
-            "gender": "Male",
-            "age": 26
         }
     ]
 }
