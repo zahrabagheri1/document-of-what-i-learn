@@ -6,21 +6,21 @@
 
 ## Users
 
-<ol>
+<ul>
     <li>Registering</li>
     <li>Logging in</li>
     <li>making purchases</li>
     <li>Scheduling appointments</li>
-</ol>
+</ul>
 
 ## Developers
 
-<ol>
+<ul>
     <li>Handling form data</li>
     <li>Enforcing validation</li>
     <li>Porviding visual feedback</li>
     <li>Data submission</li>
-</ol>
+</ul>
 
 ## React Hook Form
 
@@ -32,13 +32,13 @@
 
 <p>It's a modern, feature-rich library for managing forms in React</p>
 
-<ol>
+<ul>
     <li>Manage form data</li>
     <li>Submit form data</li>
     <li>Enforce validation</li>
     <li>Provide visual feedback</li>
     <li>React hook form provides a simple, scalable, and performant way to manage even the most complex of form</li>
-</ol>
+</ul>
 
 <u>how to use it?</u>
 
@@ -48,92 +48,92 @@
 
 <p>Form validation is a crucial part of form management</p>
 
-<ol>
+<ul>
     <li>required</li>
     <li>minLength</li>
     <li>maxLength</li>
     <li>pattern</li>
     <li>min</li>
     <li>max</li>
-</ol>
+</ul>
 
 ## Enhancing React Hook Form
 
 <p>Three pillars of dealing with forms</p>
 
-<ol>
+<ul>
     <li>Form state management</li>
     <li>Form submission</li>
     <li>Form validation</li>
-</ol>
+</ul>
 
 ## Additional features
 
-<ol>
+<ul>
     <li>Form state</li>
     <li>Form submission</li>
     <li>Form validation</li>
-</ol>
+</ul>
 
 ## Form submission state
 
 <p>Form submission state is a crucial part of form management</p>
 
-<ol>
+<ul>
     <li>isSubmitting</li>
     <li>isSubmited</li>
     <li>isSubmitSuccessful</li>
     <li>submitCount</li>
-</ol>
+</ul>
 
 ## Validation Modes
 
 <p>Validation modes are a crucial part of form management</p>
 
-<ol>    
+<ul>    
     <li>OnSubmit</li>
-    <ol>
+    <ul>
         <li>is Default Validate when the user submits the form</li>
-    </ol>
+    </ul>
     <li>OnBlur</li>
-    <ol>
+    <ul>
         <li>Validate when the user leaves the field</li>
-    </ol>
+    </ul>
     <li>OnChange</li>   
-    <ol>
+    <ul>
         <li>Validate when the user changes the field</li>
-    </ol>
+    </ul>
     <li>OnTouched</li>
-    <ol>
+    <ul>
         <li>Validate when the user touches the field - when we use this mode, it can lead to a performance issue and multiple re-renders</li>
-    </ol>
+    </ul>
     <li>all</li>
-    <ol>
+    <ul>
         <li>Validate all the time</li>
-    </ol>
-</ol>
+    </ul>
+</ul>
 
 
 ## Manually Trigger Validations
 
 <p>Manually trigger validations is a crucial part of form management</p>
 
-<ol>
+<ul>
     <li>validate</li>
-</ol>
+</ul>
 
 
 ## Yup Integration
 <p>Yup is a schema declaration and validation library for JavaScript</p>
 
-<ol>
+<ul>
     <li>yup</li>
-</ol>
+</ul>
 
 ## Zod Integration
 <p>Zod is a schema declaration and validation library for JavaScript</p>
 
-<ol>
+<ul>
     <li>zod</li>
-</ol>
+</ul>
     
