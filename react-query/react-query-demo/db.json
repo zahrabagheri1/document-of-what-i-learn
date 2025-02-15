@@ -1,0 +1,54 @@
+{
+    "superheroes": [
+        {
+            "id": 1,
+            "name": "Superman",
+            "age": 30
+        },
+        {
+            "id": 2,
+            "name": "Batman",
+            "age": 35
+        },
+        {
+            "id": 3,
+            "name": "Wonder Woman",
+            "age": 28
+        },
+        {
+            "id": 4,
+            "name": "Flash",
+            "age": 24
+        },
+        {
+            "id": 5,
+            "name": "Aquaman",
+            "age": 32
+        },
+        {
+            "id": 6,
+            "name": "Cyborg",
+            "age": 27
+        },
+        {
+            "id": 7,
+            "name": "Green Lantern",
+            "age": 31
+        },
+        {
+            "id": 8,
+            "name": "Supergirl",
+            "age": 29
+        },
+        {
+            "id": 9,
+            "name": "The Flash",
+            "age": 26
+        },
+        {
+            "id": 10,
+            "name": "Batwoman",
+            "age": 33
+        }
+    ]
+}
