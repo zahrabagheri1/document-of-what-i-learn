@@ -34,7 +34,15 @@ function YouTubeFrom() {
       phNumbers: [{ number: "" }],
       age: 0,
       dob: new Date()
-    }
+    },
+    // mode: "onBlur", //? validate when the user leaves the field
+    // mode: 'onChange' //? validate when the user changes the field
+    // mode: 'onTouched', //? validate when the user touches the field - when we use this mode, it can lead to a performance issue and multiple re-renders
+    // mode: 'onValid', //? validate when the user enters a valid value
+    // mode: 'onInvalid', //? validate when the user enters an invalid value
+    // mode: 'onSubmit', //? default mode
+    mode: 'all', //? validate all the time
+
     // defaultValues: async () => {
     //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
     //   const data = await response.json();
