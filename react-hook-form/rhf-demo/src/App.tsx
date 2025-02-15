@@ -1,13 +1,15 @@
 
 import './App.css'
 import YouTubeFrom from './components/YouTubeFrom'
-import YupTouTubeForm from './components/YupTouTubeForm'
+import YupTouTubeForm from './components/YupYouTubeForm'
+import ZodYouTubeForm from './components/ZodYouTubeForm'
 function App() {
 
   return (
     <div> 
       {/* <YouTubeFrom /> */}
-      <YupTouTubeForm />
+      {/* <YupTouTubeForm />  */}
+      <ZodYouTubeForm />
     </div>
   )
 }

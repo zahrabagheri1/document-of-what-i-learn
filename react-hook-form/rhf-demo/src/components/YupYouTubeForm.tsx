@@ -16,7 +16,7 @@ type FormData = {
     channel: string;
 }
 
-function YupTouTubeForm() {
+function YupYouTubeForm() {
     const form = useForm<FormData>({
         defaultValues: {
             username: '',
@@ -66,4 +66,4 @@ function YupTouTubeForm() {
     )
 }
 
-export default YupTouTubeForm
+export default YupYouTubeForm       
