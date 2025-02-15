@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 // import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
@@ -17,7 +18,7 @@ function RQSuperHeroesPage() {
   };
 
   const { isLoading, data, isError, error, isFetching, refetch } =
-    useSuperHeroesData(onSuccess, onError);
+    useSuperHeroesData({ onSuccess, onError });
 
   // const { isLoading, data, isError, error, isFetching, refetch } = useQuery({
   // queryKey: ["super-heroes"],
@@ -42,8 +43,8 @@ function RQSuperHeroesPage() {
   //   },
   // });
 
-  console.log(data, error);
-  console.log({ isLoading, isFetching });
+  // console.log(data, error);
+  // console.log({ isLoading, isFetching });
 
   if (isLoading || isFetching) {
     return <h2>Loading...</h2>;
@@ -53,17 +54,23 @@ function RQSuperHeroesPage() {
     return <h2 className="error">{error.message}</h2>;
   }
 
+  console.log(data.data);
+
   return (
     <>
       <h1>RQ Super Heroes Page</h1>
       <button onClick={() => refetch()}>Fetch Super Heroes</button>
-      {/* {data?.data.map((hero) => (
-        <div key={hero.name}>{hero.name}</div>
-      ))} */}
+      <div className="super-heroes-list">
+        {data?.data.map((hero) => (
+          <div key={hero.id}>
+            <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+          </div>
+        ))}
+      </div>
 
-      {data?.map((heroName) => (
+      {/* {data?.map((heroName) => (
         <div key={heroName}>{heroName}</div>
-      ))}
+      ))} */}
     </>
   );
 }

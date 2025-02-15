@@ -44,3 +44,73 @@ nav ul li a {
   font-size: 24px;
   font-weight: bolder;
 }
+
+.super-heroes-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.super-heroes-list a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.super-heroes-list a:hover {
+  color: rgb(78, 107, 118);
+  text-shadow: 0 2px 10px #091d43;
+}
+
+.super-hero-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.super-hero-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 8px double #cbce1b;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.super-hero-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.super-hero-info-name {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+
+.super-hero-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.super-hero-box label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.super-hero-box-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;  
+  gap: 20px;
+}
