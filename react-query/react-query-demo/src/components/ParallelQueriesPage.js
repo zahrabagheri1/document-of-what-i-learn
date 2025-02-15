@@ -11,8 +11,14 @@ const fetchFriends = () => {
 };
 
 function ParallelQueriesPage() {
-  const { data: superHeroes } = useQuery("super-heroes", fetchSuperHeroes);
-  const { data: friends } = useQuery("friends", fetchFriends);
+  const { data: superHeroes } = useQuery({
+    queryKey: ["super-heroes"],
+    queryFn: fetchSuperHeroes,
+  });
+  const { data: friends } = useQuery({
+    queryKey: ["friends"],
+    queryFn: fetchFriends,
+  });
 
   console.log(superHeroes, friends);
 
