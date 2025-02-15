@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -38,7 +37,7 @@ function App() {
       throw new Error()
     } catch (error) {
       setError('root', {
-        message: `This ${error.message} is already in taken`
+        message: error instanceof Error ? error.message : 'Something went wrong'
       })
     }
   }
