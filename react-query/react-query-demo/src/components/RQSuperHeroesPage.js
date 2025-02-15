@@ -12,7 +12,8 @@ function RQSuperHeroesPage() {
     //     return axios.get("http://localhost:4000/superheroes");
     //   },
     queryFn: fetchSuperHeroes,
-    gcTime: 5000, // 5 seconds after the data is stale, it will be removed from the cache {gcTime is garbage collection time}
+    //gcTime: 5000, // 5 seconds after the data is stale, it will be removed from the cache {gcTime is garbage collection time}
+    // staleTime: 0, // 2 seconds after the data is stale, it will be refetched
   });
 
   console.log({ isLoading, isFetching });
