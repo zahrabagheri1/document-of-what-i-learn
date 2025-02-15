@@ -14,8 +14,11 @@ function RQSuperHeroesPage() {
     queryFn: fetchSuperHeroes,
     //gcTime: 5000, // 5 seconds after the data is stale, it will be removed from the cache {gcTime is garbage collection time}
     // staleTime: 0, // 2 seconds after the data is stale, it will be refetched
-    refetchOnMount: true,
-    refetchOnWindowFocus: false,
+    // refetchOnMount: true,
+    // refetchOnWindowFocus: false,
+    // refetchInterval: 2000, // 2 seconds after the data is stale, it will be refetched
+    // refetchIntervalInBackground: true, // 2 seconds after the data is stale, it will be refetched
+
   });
 
   console.log({ isLoading, isFetching });
