@@ -6,16 +6,21 @@ const fetchSuperHeroes = () => {
 };
 
 function RQSuperHeroesPage() {
-  const { isLoading, data } = useQuery({
+  const { isLoading, data , isError, error } = useQuery({
     queryKey: ["super-heroes"],
     //   queryFn: () => {
     //     return axios.get("http://localhost:4000/superheroes");
     //   },
     queryFn: fetchSuperHeroes,
+
   });
 
   if (isLoading) {
     return <h2>Loading...</h2>;
+  }
+
+  if (isError) {
+    return <h2 className="error">{error.message}</h2>;
   }
 
   return (
