@@ -120,5 +120,87 @@
             "phone": "123-456-7890",
             "age": 33
         }
+    ],
+    "friends": [
+        {
+            "id": 1,
+            "name": "Rachel Green",
+            "age": 30,
+            "gender": "Female",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Rachel Green",
+            "realName": "Rachel Green",
+            "actor": "Jennifer Aniston"
+        },
+        {
+            "id": 2,
+            "name": "Ross Geller",
+            "age": 35,
+            "gender": "Male",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Ross Geller",
+            "realName": "Ross Geller",
+            "actor": "David Schwimmer"
+        },
+        {
+            "id": 3,
+            "name": "Monica Geller",
+            "age": 32,
+            "gender": "Female",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Monica Geller",
+            "realName": "Monica Geller",
+            "actor": "Courteney Cox"
+        },
+        {
+            "id": 4,
+            "name": "Chandler Bing",
+            "age": 31,
+            "gender": "Male",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Chandler Bing",
+            "realName": "Chandler Bing",
+            "actor": "Matthew Perry"
+        },
+        {
+            "id": 5,
+            "name": "Joey Tribbiani",
+            "age": 30,
+            "gender": "Male",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Joey Tribbiani",
+            "realName": "Joey Tribbiani",
+            "actor": "Matt LeBlanc"
+        },
+        {
+            "id": 6,
+            "name": "Phoebe Buffay",
+            "age": 28,
+            "gender": "Female",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Phoebe Buffay",
+            "realName": "Phoebe Buffay",
+            "actor": "Lisa Kudrow"
+        },
+        {
+            "id": 7,
+            "name": "Chandler Bing",
+            "age": 31,
+            "gender": "Male",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Chandler Bing",
+            "realName": "Chandler Bing",
+            "actor": "Matthew Perry"
+        },
+        {
+            "id": 8,
+            "name": "Ross Geller",
+            "age": 35,
+            "gender": "Male",
+            "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/Friends_Ross_and_Rachel.jpg",
+            "alterEgo": "Ross Geller",
+            "realName": "Ross Geller",
+            "actor": "David Schwimmer"
+        }   
     ]
 }
