@@ -61,7 +61,8 @@ function YouTubeFrom() {
     watch,
     getValues,
     setValue,
-    reset
+    reset,
+    trigger
   } = form;
 
   // const { name, ref, onChange, onBlur } = register('username');
@@ -261,6 +262,7 @@ function YouTubeFrom() {
           <button type='button' onClick={handleGetValue}>Get value</button>
           <button type='button' onClick={() => reset()}>Reset</button>
           <button type='button' onClick={handleSetValue}>Set value</button>
+          <button type='button' onClick={() => trigger("channel")}>Trigger</button>
       </form>
 
       <DevTool control={control} />
