@@ -112,7 +112,7 @@ function YouTubeFrom() {
     }
   },[isSubmitSuccessful, reset])
 
-  
+
   //   return () => subscription.unsubscribe()
   // }, [watch])
 
@@ -124,7 +124,6 @@ function YouTubeFrom() {
       {/* <h1>Form: {JSON.stringify(watchForm)}</h1> */}
 
       <form className='form' onSubmit={handleSubmit(onSubmit, onError)} noValidate>
-        <div className='form-group'>
           {/* Username */}
           <div className='form-control'>
             <label htmlFor="username">Username</label>
@@ -152,6 +151,11 @@ function YouTubeFrom() {
                 },
                 notBlackListed: (fieldValue) => {
                   return !fieldValue.endsWith("baddomain.com") || "This domain is not supported"
+                },
+                emailAvailable: async(fieldValue)=>{
+                  const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${fieldValue}`)
+                  const data = await response.json();
+                  return data.length === 0 || "Email is already exists"
                 }
               }
             })} />
@@ -229,7 +233,7 @@ function YouTubeFrom() {
               {
                 fields.map((field, index) => {
                   return (
-                    <div className='form-control form-control-phone' key={field.id}>
+                    <div className='form-control' key={field.id}>
                       <input type='text' {...register(`phNumbers.${index}.number` as const)} />
                       {
                         index > 0 && (
@@ -243,14 +247,12 @@ function YouTubeFrom() {
               <button type='button' onClick={() => append({ number: "" })}>Add phone number</button>
             </div>
           </div>
-        </div>
 
-        <div className='form-control-button'>
-          <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
+          {/* <button type='submit' disabled={!isDirty || !isValid || isSubmitting}>Submit</button> */}
+          <button type='submit' disabled={!isDirty || isSubmitting}>Submit</button>
           <button type='button' onClick={handleGetValue}>Get value</button>
           <button type='button' onClick={() => reset()}>Reset</button>
           <button type='button' onClick={handleSetValue}>Set value</button>
-        </div>
       </form>
 
       <DevTool control={control} />
