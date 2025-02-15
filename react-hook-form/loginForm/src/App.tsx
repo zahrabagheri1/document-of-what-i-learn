@@ -4,10 +4,18 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import './App.css'
 
-type FormFields = {
-  email: string
-  password: string
-}
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8)
+})
+
+type FormFields = z.infer<typeof schema>
+
+// type FormFields = {
+//   email: string
+//   password: string
+// }
 
 function App() {
   const {
@@ -48,14 +56,14 @@ function App() {
             type="text"
             placeholder="Email"
             {...register("email",
-              {
-                required: 'Email is required',
-                // pattern: {
-                //   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                //   message: "Invalid email address"
-                // }
-                validate: (value) => !value.includes('@') ? 'Invalid email address' : true
-              },
+              // {
+              // required: 'Email is required',
+              // pattern: {
+              //   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              //   message: "Invalid email address"
+              // }
+              // validate: (value) => !value.includes('@') ? 'Invalid email address' : true
+              // },
             )}
           />
           {errors.email && <p className="form-error">{errors.email.message}</p>}
@@ -68,13 +76,13 @@ function App() {
             type="password"
             placeholder="Password"
             {...register("password",
-              {
-                required: 'Password is required',
-                minLength: {
-                  value: 8,
-                  message: 'Password must be at least 8 characters long'
-                }
-              }
+              // {
+              // required: 'Password is required',
+              // minLength: {
+              //   value: 8,
+              //   message: 'Password must be at least 8 characters long'
+              // }
+              // }
             )}
           />
           {errors.password && <p className="form-error">{errors.password.message}</p>}
