@@ -202,5 +202,31 @@
             "realName": "Ross Geller",
             "actor": "David Schwimmer"
         }   
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "Hank",
+            "email": "hank@gmail.com",
+            "channelId": "codewithhank"
+        },
+        {
+            "id": 2,
+            "name": "John",
+            "email": "john@gmail.com",
+            "channelId": "CodeWithJohn"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1,
+            "name": "CodeWithJohn",
+            "course": ["React", "Node", "MongoDB", "Express", "GraphQL", "NextJS"]
+        },
+        {
+            "id": 2,
+            "name": "codewithhank",
+            "course": ["React Hooks", "React Router", "Redux", "NextJS", "GraphQL", "MongoDB"]
+        }
     ]
 }
