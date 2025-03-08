@@ -1,5 +1,4 @@
-
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 // const fetchSuperHero = ({ queryKey }) => {
@@ -12,9 +11,21 @@ const fetchSuperHero = (heroId) => {
 };
 
 export const useSuperHeroData = (heroId) => {
+  const queryClient = useQueryClient();
+
   return useQuery({
     queryKey: ["super-hero", heroId],
     queryFn: () => fetchSuperHero(heroId),
+    initialData: () => {
+      const hero = queryClient
+        .getQueryData("super-hero")
+        ?.data?.find((hero) => hero.id === parseInt(heroId));
+
+      if (hero) {
+        return hero;
+      } else {
+        return undefined;
+      }
+    },
   });
 };
-
